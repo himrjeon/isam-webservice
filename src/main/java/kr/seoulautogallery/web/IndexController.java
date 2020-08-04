@@ -19,7 +19,7 @@ public class IndexController {
     private final PostsService postsService;
     private final HttpSession httpSession;
 
-    @GetMapping("/")
+    @GetMapping("/indexx")
     public String index(Model model, @LoginUser SessionUser user) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
         model.addAttribute("posts", postsService.findAllDesc());
         // 기존에 httpSesstion.getAttribute("user")로 가져오던 세션 정보 값이 개선됨.
@@ -51,8 +51,13 @@ public class IndexController {
         return "posts-update";
     }
 
-    @GetMapping("/indexx")
-    public String indexx() { return "indextest"; }
+    @GetMapping("/")
+    public String indexx(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+        return "indextest";
+    }
 
 
     @GetMapping("/about")

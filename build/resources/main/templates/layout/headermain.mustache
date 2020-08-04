@@ -103,12 +103,24 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="index.html" data-toggle="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         <span class="icon-profile-male" aria-hidden="true"></span>
                         </a>
                         <ul class="dropdown-menu">
+                            {{#uName}} <!-- 머스테치는 if문을 제공하지 않고 트루펄스여부만 판단. 유저네임이 있으면 노출 -->
                             <li>
-                                <a href="/snslogin" data-toggle="dropdown">로그인</a>
+                                <a href="#">사용자이름 : {{uName}}</a>
+                            </li>
+                            <li>
+                                <a href="/logout">로그아웃</a>
+                                <!-- 시큐리티에서 기본으로 제공하는 로그아웃 url, 컨트롤러 만들 필요 없음. -->
+                            </li>
+                                {{/uName}}
+                                {{^uName}} <!--머스테치에서 해당 값이 존재하는 않는 경우는 ^를 사용. 없으면 로그인 버튼 노출 -->
+                                    <li>
+                                        <a href="/snslogin">로그인</a>
+                                    </li>
+                                {{/uName}}
                             </li>
 
                         </ul>
