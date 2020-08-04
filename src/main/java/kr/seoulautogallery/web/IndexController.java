@@ -54,4 +54,20 @@ public class IndexController {
     @GetMapping("/indexx")
     public String indexx() { return "indextest"; }
 
+
+    @GetMapping("/about")
+    public String about() { return "about"; }
+
+    @GetMapping("/snslogin")
+    public String snslogin() { return "snslogin"; }
+
+    @GetMapping("/carprocess")
+    public String carprocess() {return "carprocess";}
+
+    @GetMapping("/cometous")
+    public String cometous() {return "cometous";}
+
+    @GetMapping("/financial")
+    public String financial() {return "financial";}
+
 }
