@@ -828,7 +828,7 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             var map = new google.maps.Map(mapElement, mapOptions);
 
             // Let's also add a marker while we're at it
-            var image = new google.maps.MarkerImage('assets/images/map-icon.png',
+            var image = new google.maps.MarkerImage('/image/map-icon.png',
                 new google.maps.Size(59, 65),
                 new google.maps.Point(0, 0),
                 new google.maps.Point(24, 42)

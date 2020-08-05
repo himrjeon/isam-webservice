@@ -1,0 +1,92 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module bg-dark-60 about-page-header" data-background="/image/inst_pn_test3.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">견적문의</h2>
+                    <div class="module-subtitle font-serif">고객님들께 최상의 서비스를 제공하겠습니다.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="module" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div id="maps" style="width:555px;height:400px;"></div>
+                    <br>
+                    <div class="col-sm-12">
+                        <div class="module-subtitle font-serif align-left">서울시 서초구 양재대로 11길 36 서울오토갤러리 은관 420호 아이에스오토모빌
+                            <p>Tel. 02-2059-5099<br>FAX.02-2059-5098</p>
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f38a5ba3555c6475006dc31eb2f5be64"></script>
+                    <script>
+                        var container = document.getElementById('maps'); //지도를 담을 영역의 DOM 레퍼런스
+                        var options = { //지도를 생성할 때 필요한 기본 옵션
+                        center: new kakao.maps.LatLng(37.461870, 127.035464), //지도의 중심좌표.
+                        level: 3 //지도의 레벨(확대, 축소 정도)
+                        };
+
+                        var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+                        var markerPosition = new kakao.maps.LatLng(37.461870, 127.035464);
+
+                        var marker = new kakao.maps.Marker({
+                            position: markerPosition
+                        });
+
+                        marker.setMap(map);
+
+                        var iwContent = '<div style="padding:5px;">아이에스오토모빌 <br><a href="https://map.kakao.com/link/to/아이에스오토모빌,37.461870, 127.035464" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                        iwPosition = new kakao.maps.LatLng(37.461870, 127.035464); //인포윈도우 표시 위치입니다
+
+                        // 인포윈도우를 생성합니다
+                        var infowindow = new kakao.maps.InfoWindow({
+                        position : iwPosition,
+                        content : iwContent
+                        });
+
+                        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+                        infowindow.open(map, marker);
+
+                    </script>
+                    <h2 class="module-title font-alt">상담신청</h2>
+                    <div class="module-subtitle font-serif"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <form id="contactForm" role="form" method="post" action="php/contact.php">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Name</label>
+                            <input class="form-control" type="text" id="name" name="name" placeholder="성함*" required="required" data-validation-required-message="성함"/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="phone">Phone</label>
+                            <input class="form-control" type="text" id="phone" name="phone" placeholder="연락처*" required="required" data-validation-required-message="연락처"/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="email">Email</label>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="이메일 주소*" required="required" data-validation-required-message="이메일 주소"/>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="7" id="message" name="message" placeholder="상담 내용" required="required" data-validation-required-message="상담내용"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    <div class="ajax-response font-alt" id="contactFormResponse"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footermain}}

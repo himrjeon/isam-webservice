@@ -75,4 +75,7 @@ public class IndexController {
     @GetMapping("/financial")
     public String financial() {return "financial";}
 
+    @GetMapping("/contactus")
+    public String contactus() {return "contactus";}
+
 }
