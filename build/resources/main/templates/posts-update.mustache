@@ -1,9 +1,22 @@
-{{>layout/header}}
+{{>layout/headermain}}
 
-<h1>게시글 수정</h1>
+<div class="main">
+    <section class="module bg-dark-60 about-page-header" data-background="/image/inst_pn_test2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">게시글 수정</h2>
+                    <div class="module-subtitle font-serif"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="col-md-12">
-    <div class="col-md-4">
+    <section class="module-medium" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="col-md-13">
         <form>
             <div class="form-group">
                 <label for="title">글 번호</label>
@@ -22,10 +35,13 @@
                 <textarea class="form-control" id="content">{{post.content}}</textarea>
             </div>
         </form>
-        <a href="/" role="button" class="btn btn-secondary">취소</a>
+        <a href="/freeboard" role="button" class="btn btn-secondary">취소</a>
         <button type="button" class="btn btn-primary" id="btn-update">수정 완료</button>
         <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
-    </div>
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-{{>layout/footer}}
+{{>layout/footermain}}
