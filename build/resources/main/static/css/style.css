@@ -2470,7 +2470,7 @@ Google map
 	Client
 --------------------------------------------------------------*/
 .client-logo {
-  opacity: .5;
+  opacity: 1;
 }
 
 .client-logo:hover {

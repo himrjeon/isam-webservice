@@ -1,4 +1,5 @@
-console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55');
+console.log('%c FrontEnd Proudly Crafted with ZiOn.', 'background: #222; color: #bada55');
+console.log('%c BackEnd Proudly Crafted with CSLab.', 'background: #222; color: #bada55');
 
 /* ---------------------------------------------- /*
  * Preloader
