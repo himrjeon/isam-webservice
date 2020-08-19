@@ -62,12 +62,12 @@
                     <form id="contactForm" role="form" method="post" action="php/contact.php">
                         <div class="form-group">
                             <label class="sr-only" for="name">Name</label>
-                            <input class="form-control" type="text" id="name" name="name" placeholder="성함*" required="required" data-validation-required-message="성함"/>
+                            <input class="form-control" type="text" id="guestname" name="guestname" placeholder="성함*" required="required" data-validation-required-message="성함"/>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="phone">Phone</label>
-                            <input class="form-control" type="text" id="phone" name="phone" placeholder="연락처*" required="required" data-validation-required-message="연락처"/>
+                            <input class="form-control" type="text" id="phonenum" name="phonenum" placeholder="연락처*" required="required" data-validation-required-message="연락처"/>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">
@@ -76,11 +76,11 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="7" id="message" name="message" placeholder="상담 내용" required="required" data-validation-required-message="상담내용"></textarea>
+                            <textarea class="form-control" rows="7" id="content" name="content" placeholder="상담 내용" required="required" data-validation-required-message="상담내용"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Submit</button>
+                            <button class="btn btn-block btn-round btn-d" id="btn-guest-submit" type="submit">Submit</button>
                         </div>
                     </form>
                     <div class="ajax-response font-alt" id="contactFormResponse"></div>
