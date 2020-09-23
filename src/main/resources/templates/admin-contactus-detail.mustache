@@ -1,0 +1,64 @@
+{{>layout/headeradmin}}
+
+<div class="main">
+    <section class="module-small">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">관리자 화면</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin">관리자 페이지</a></li>
+                            <li><a href="/">ISAM 홈페이지</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">상품 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/importcar/save">직수입 등록</a></li>
+                            <li><a href="/admin/importcar">직수입 리스트</a></li>
+                            <li><a href="/usedcar/save">중고차 등록</a></li>
+                            <li><a href="/admin/usedcar">중고차 리스트</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">게시판 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/notice">공지사항 목록</a></li>
+                            <li><a href="/admin/news">뉴스 목록</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">문의사항 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/contactus">일반 문의사항</a></li>
+                            <li><a href="/admin/carcontact">차량 문의사항</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">홈페이지 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="#">개발 예정</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                    <div class="post">
+                        <div class="post-header font-alt">
+                            <h1 class="post-title">문의사항</h1>
+                            <div class="post-meta">By&nbsp;<a href="#">{{guestbook.guestname}}</a>
+                            </div>
+                        </div>
+                        <div class="post-entry">
+                            <p>연락처 : {{guestbook.phonenum}}</p>
+                            <p>이메일 : {{guestbook.email}}</p>
+                            <p>문의내용 : {{guestbook.content}}</p>
+                            <p>등록일자 : {{guestbook.modifiedDate}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footeradmin}}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<h1>파일 업로드</h1> <hr>
+
+<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+    제목 : <input type="text" name="title"> <br>
+    파일 : <input multiple="multiple" type="file" name="file"> <br>
+    파일 : <input multiple="multiple" type="file" name="file2"> <br>
+    <button>등록하기</button>
+</form>
+
+<hr>
+
+<div>
+    {{#galleryList}}
+    <div style="margin-bottom: 30px">
+        <p th:inline="text">제목 : {{title}}</p>
+        <img src="{{imgFullPath}}" style="width: 500px; height: 300px;">
+        <img src="{{imgFullPath2}}" style="width: 500px; height: 300px;">
+    </div>
+
+    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="hidden" name="title" value="{{title}}">
+        <input type="hidden" name="filePath" value="{{filePath}}">
+        파일 : <input type="file" name="file"> <br>
+        <button>수정하기</button>
+    </form>
+    {{/galleryList}}
+    <hr>
+</div>
+
+</body>
+</html>

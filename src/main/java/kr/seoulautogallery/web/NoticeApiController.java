@@ -1,6 +1,5 @@
 package kr.seoulautogallery.web;
 
-import kr.seoulautogallery.service.posts.NewsService;
 import kr.seoulautogallery.service.posts.NoticeService;
 import kr.seoulautogallery.web.dto.*;
 import lombok.RequiredArgsConstructor;

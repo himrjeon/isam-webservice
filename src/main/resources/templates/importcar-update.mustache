@@ -1,0 +1,299 @@
+{{>layout/headeradmin}}
+<div class="main">
+    <section class="module-small">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">관리자 화면</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin">관리자 페이지</a></li>
+                            <li><a href="/">ISAM 홈페이지</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">상품 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/importcar/save">직수입 등록</a></li>
+                            <li><a href="/admin/importcar">직수입 리스트</a></li>
+                            <li><a href="/usedcar/save">중고차 등록</a></li>
+                            <li><a href="/admin/usedcar">중고차 리스트</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">게시판 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/notice">공지사항 목록</a></li>
+                            <li><a href="/admin/news">뉴스 목록</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">문의사항 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/contactus">일반 문의사항</a></li>
+                            <li><a href="/admin/carcontact">차량 문의사항</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">홈페이지 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="#">개발 예정</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                    <div class="post">
+                        <div class="post-header font-alt">
+                            <h1 class="post-title">차량 수정</h1>
+                            <div class="post-meta">By&nbsp;<a href="#">관리자</a>
+                            </div>
+                        </div>
+                        <div class="post-entry">
+                            <form id="insertForm" action="/importcar/upload" method="post" enctype="multipart/form-data">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        상품제목<input class="form-control" type="text" id="title" name="title" placeholder="제목" value="{{importcar.title}}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        판매여부
+                                        <select id="carsalecheck" name="carsalecheck" class="form-control">
+                                            <option value="통관진행중">톻관진행중</option>
+                                            <option value="판매중">판매중</option>
+                                            <option value="판매완료">판매완료</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        가격
+                                        <input class="form-control" type="text" id="carprice" name="carprice" onKeyup="inputPriceNumberAutoComma(this);" placeholder="가격(원)" value="{{importcar.carprice}}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        제조사
+                                        <input class="form-control" type="text" id="carmanufacturer" name="carmanufacturer" placeholder="제조사">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        모델명
+                                        <input class="form-control" type="text" id="carmodel" name="carmodel" placeholder="모델명">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        세부모델명
+                                        <input class="form-control" type="text" id="carmodeldetail" name="carmodeldetail" placeholder="세부모델명">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        등급명
+                                        <input class="form-control" type="text" id="cartrim" name="cartrim" placeholder="등급명">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        세부등급명
+                                        <input class="form-control" type="text" id="cartrimdetail" name="cartrimdetail" placeholder="세부등급명">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        연식
+                                        <input class="form-control" type="text" id="caryear" name="caryear" placeholder="연식">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        주행거리
+                                        <input class="form-control" type="text" id="cardistance" name="cardistance" onKeyup="inputNumberAutoComma(this);" placeholder="주행거리(km)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        배기량
+                                        <input class="form-control" type="text" id="carpower" name="carpower" onKeyup="inputNumberAutoComma(this);" placeholder="배기량(cc)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        변속기
+                                        <input class="form-control" type="text" id="cartransmission" name="cartransmission" placeholder="변속기">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        색상
+                                        <input class="form-control" type="text" id="carcolor" name="carcolor" placeholder="색상">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        연료
+                                        <input class="form-control" type="text" id="carfuel" name="carfuel" placeholder="연료">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        구동방식
+                                        <input class="form-control" type="text" id="cartractor" name="cartractor" placeholder="구동방식">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량대표사진
+                                        <input class="form-control" type="file" id="file" name="file">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(1)
+                                        <input class="form-control" type="file" id="file2" name="file2">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(2)
+                                        <input class="form-control" type="file" id="file3" name="file3">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(3)
+                                        <input class="form-control" type="file" id="file4" name="file4">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(4)
+                                        <input class="form-control" type="file" id="file5" name="file5">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(5)
+                                        <input class="form-control" type="file" id="file6" name="file6">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(6)
+                                        <input class="form-control" type="file" id="file7" name="file7">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(7)
+                                        <input class="form-control" type="file" id="file8" name="file8">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(8)
+                                        <input class="form-control" type="file" id="file9" name="file9">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(9)
+                                        <input class="form-control" type="file" id="file10" name="file10">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(10)
+                                        <input class="form-control" type="file" id="file11" name="file11">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(11)
+                                        <input class="form-control" type="file" id="file12" name="file12">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(12)
+                                        <input class="form-control" type="file" id="file13" name="file13">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(13)
+                                        <input class="form-control" type="file" id="file14" name="file14">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(14)
+                                        <input class="form-control" type="file" id="file15" name="file15">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(15)
+                                        <input class="form-control" type="file" id="file16" name="file16">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(16)
+                                        <input class="form-control" type="file" id="file17" name="file17">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(17)
+                                        <input class="form-control" type="file" id="file18" name="file18">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(18)
+                                        <input class="form-control" type="file" id="file19" name="file19">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        차량이미지(19)
+                                        <input class="form-control" type="file" id="file20" name="file20">
+                                    </div>
+                                </div>
+                                <div style="display:none">
+                                    <input type="textarea" id="test"  name="content">
+                                    <input type="textarea" id="test2" name="subcontent">
+                                </div>
+                            </form>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    간단소개내용(3줄이하)
+                                    <div id="editor2"></div>
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    상세내용
+                                    <div id="editor"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="car-btn-save">등록하기</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{{>layout/footeradmin}}

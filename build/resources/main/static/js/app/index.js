@@ -53,6 +53,14 @@ var main = {
             _this.guestdelete();
         });
 
+        $('#btnReplySave').on('click', function() {
+            _this.postcommentsave();
+        });
+
+        $('#btn-carguest-submit').on('click', function () {
+                    _this.carguestsave();
+        });
+
 
 
         },
@@ -225,7 +233,7 @@ var main = {
                  });
           },
 
-          noticesdelete : function () {
+          noticedelete : function () {
              var id = $('#id').val();
 
              $.ajax({
@@ -298,11 +306,97 @@ var main = {
                  contentType: 'application/json; charset=utf-8'
              }).done(function() {
                  alert('글이 삭제되었습니다. ');
-                 window.location.href = '/contactus';
+                 window.location.reload();
              }).fail(function (error) {
                  alert(JSON.stringify(error));
              });
 
-          }
+          },
+
+          postcommentsave : function () {
+                 var data = {
+                     memo: $('#memocontent').val(),
+                     author: $('#memoauthor').val()
+                 };
+                 var id = $('#id').val();
+                 $.ajax({
+                             type: 'POST',
+                             url: '/api/v1/postcomment/'+id,
+                             dataType: 'json',
+                             contentType:'application/json; charset=utf-8',
+                             data: JSON.stringify(data)
+                         }).done(function() {
+                             alert('글이 등록되었습니다.');
+                             window.location.reload();
+                         }).fail(function (error) {
+                             alert(JSON.stringify(error));
+                         });
+
+                    },
+
+                 carguestsave : function () {
+                         var data = {
+                             carinfo: $('#carinfo').val(),
+                             guestname: $('#guestname').val(),
+                             phonenum: $('#phonenum').val(),
+                             email: $('#email').val(),
+                             content: $('#content').val()
+                         };
+                         $.ajax({
+                                     type: 'POST',
+                                     url: '/api/v2/carguestbook',
+                                     dataType: 'json',
+                                     contentType:'application/json; charset=utf-8',
+                                     data: JSON.stringify(data)
+                                 }).done(function() {
+                                     alert('문의사항이 접수되었습니다. 등록해주신 연락처로 빠른 서비스 제공해드리겠습니다.');
+                                     window.location.reload();
+                                 }).fail(function (error) {
+                                     alert(JSON.stringify(error));
+                                 });
+                         },
+
+                  // 신규로 추가될 업데이트 함수 기능
+                  carguestupdate : function() {
+                         var data= {
+                             title: $('#title').val(),
+                             content: $('#content').val()
+                         };
+
+                         var id = $('#id').val();
+
+                         // put 메소드는 putmapping을 사용했기 때문에. rest에서 crud는 생성 post, 읽기 get, 수정 put, 삭제 delete
+                         // url은 어느 게시글을 수정할지에 대해 path에 id를 추가하여 구분.
+                         $.ajax({
+                             type: 'PUT',
+                             url: '/api/v2/carguestbook/'+id,
+                             dataType: 'json',
+                             contentType: 'application/json; charset=utf-8',
+                             data: JSON.stringify(data)
+                         }).done(function() {
+                             alert('글이 수정되었습니다.');
+                             window.location.reload();
+                         }).fail(function (error) {
+                             alert(JSON.stringfy(error));
+                         });
+                  },
+
+                  carguestdelete : function () {
+                     var id = $('#id').val();
+
+                     $.ajax({
+                         type: 'DELETE',
+                         url: '/api/v2/carguestbook/'+id,
+                         dataType: 'json',
+                         contentType: 'application/json; charset=utf-8'
+                     }).done(function() {
+                         alert('글이 삭제되었습니다. ');
+                         window.location.reload();
+                     }).fail(function (error) {
+                         alert(JSON.stringify(error));
+                     });
+
+                  }
+
     };
     main.init();

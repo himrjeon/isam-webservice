@@ -27,6 +27,7 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('com.amazonaws:aws-java-sdk-s3')
     compile('org.projectlombok:lombok')
     compile('org.springframework.boot:spring-boot-starter-data-jpa') // Jpa 추상화 라이브러리
     compile('com.h2database:h2') // 인메모리 관계형 데이터베이스, 테스트용으로 사용
@@ -34,6 +35,13 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-oauth2-client') // 소셜 로그인 기능 구현시 필요한 의존성\
     compile('org.springframework.session:spring-session-jdbc')
     compile('org.mariadb.jdbc:mariadb-java-client')
+    compile group: 'org.apache.commons', name: 'commons-text', version: '1.8'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.847'
+    }
 }

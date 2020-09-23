@@ -1,0 +1,66 @@
+{{>layout/headeradmin}}
+
+<div class="main">
+    <section class="module-small">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">관리자 화면</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin">관리자 페이지</a></li>
+                            <li><a href="/">ISAM 홈페이지</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">상품 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/importcar/save">직수입 등록</a></li>
+                            <li><a href="/admin/importcar">직수입 리스트</a></li>
+                            <li><a href="/usedcar/save">중고차 등록</a></li>
+                            <li><a href="/admin/usedcar">중고차 리스트</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">게시판 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/notice">공지사항 목록</a></li>
+                            <li><a href="/admin/news">뉴스 목록</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">문의사항 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/contactus">일반 문의사항</a></li>
+                            <li><a href="/admin/carcontact">차량 문의사항</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">홈페이지 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="#">개발 예정</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                    <div class="post">
+                        <div class="post-header font-alt">
+                            <h1 class="post-title">아이에스오토모빌 관리자 페이지</h1>
+                            <div class="post-meta">By&nbsp;<a href="#">관리자</a>
+                            </div>
+                        </div>
+                        <div class="post-entry">
+                            {{#uName}}
+                                <p>
+                                    반갑습니다. 관리자 {{uName}} 님.
+                                </p>
+                            {{/uName}}
+                            <p>좌측 메뉴 선택 시 화면 이동</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footeradmin}}

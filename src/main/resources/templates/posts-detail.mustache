@@ -1,0 +1,61 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module bg-dark-60 about-page-header" data-background="/image/inst_pn_test2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">자유 게시판</h2>
+                    <div class="module-subtitle font-serif"> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="module-small">
+        <div class="container">
+            <div class="row">
+<div class="col-sm-8 col-sm-offset-1">
+    <div class="post">
+            <div class="post-header font-alt">
+            <h1 class="post-title">{{post.title}}</h1>
+            <div class="post-meta">By&nbsp;<a href="#">{{post.author}}</a>
+            </div>
+        </div>
+        <div class="post-entry">
+            <p>{{post.content}}</p>
+        </div>
+    </div>
+    {{#comment}}
+    <div class="comments">
+        <h4 class="comment-title font-alt">댓글 목록</h4>
+        <div class="comment clearfix">
+            <div class="commentpost-content clearfix">
+                <div class="comment-author font-alt"><a href="#">{{author}}</a></div>
+                <div class="comment-body">
+                    {{memo}}
+                </div>
+                <div class="comment-meta font-alt">{{modifiedDate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/comment}}
+    <div class="comment-form">
+        <h4 class="comment-form-title font-alt">댓글</h4>
+        <form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
+                <input class="form-control" type="hidden" id="memoauthor" name="memoauthor" value ="{{#uName}}{{uName}}{{/uName}}"/>
+                <input type="hidden" id="id" value="{{post.id}}">
+            <div class="form-group">
+                <textarea class="form-control"  id="memocontent" rows="4" placeholder="댓글을 입력해 주세요"></textarea>
+            </div>
+            <button class="btn btn-round btn-d" type="button" id="btnReplySave" >댓글달기</button>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+{{>layout/footermain}}

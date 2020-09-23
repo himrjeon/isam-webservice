@@ -256,6 +256,19 @@ console.log('%c BackEnd Proudly Crafted with CSLab.', 'background: #222; color: 
                 tError: 'The image could not be loaded.'
             }
         });
+        $(".gallerys").magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0,1]
+                    },
+                    image: {
+                        titleSrc: 'title',
+                        tError: 'The image could not be loaded.'
+                    }
+                });
 
 
         /* ---------------------------------------------- /*
@@ -845,6 +858,36 @@ console.log('%c BackEnd Proudly Crafted with CSLab.', 'background: #222; color: 
                 map: map,
             });
         }
+
+        /* ---------------------------------------------- /*
+                 * Image 클릭시 변경
+        /* ---------------------------------------------- */
+
+                    $('#img1').on({
+                     'click': function(){
+                     var imgsrc = $('#img1').attr('src');
+                     $('#mainimg').attr('src','https://d165e2yka53q6b.cloudfront.net/KakaoTalk_20200918_150902592.jpg-20205422135419'); }
+                     });
+
+                    /*img1을 클릭했을 때 img2를 보여줌*/
+                    $('#img1').click(function(){
+                    var imgsrc = $('#img1').attr('src');
+                        $('#mainimg').attr('src', "imgsrc");
+                    });
+
+                    /*img2를 클릭했을 때 img1을 보여줌*/
+                    $("#img2").click(function(){
+                        $("#img1").show();
+                        $("#img2").hide();
+                    });
+
+                    $('#img1').on({
+                                "click" : function(){
+                                    var imgSrc = $(this).attr('src');
+                                    $('#mainimg').attr('src',imgSrc);
+                                }
+                            });
+
 
     });
 })(jQuery);

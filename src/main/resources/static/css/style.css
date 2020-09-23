@@ -2153,6 +2153,10 @@ Google map
   margin: 0 0 80px;
 }
 
+.carpost {
+  margin: 0 0 10px;
+}
+
 .post-title {
   line-height: 1.4;
   font-size: 22px;
@@ -2171,6 +2175,11 @@ Google map
 
 .post-entry {
   border-top: 1px dotted #c2c2c2;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+.post-entr {
   padding-top: 20px;
   margin-top: 10px;
 }
@@ -2348,7 +2357,7 @@ Google map
 
 .checkout-table tbody tr td:first-child,
 .checkout-table tbody tr th:first-child {
-  max-width: 36px;
+  max-width: 200px;
 }
 
 /* Sidebar / Widget common*/
@@ -2440,8 +2449,7 @@ Google map
 }
 
 .comment-author {
-  font-size: 14px;
-  margin: 0 0 10px;
+  font-size: 13px;
 }
 
 .comment-avatar {
@@ -2455,10 +2463,15 @@ Google map
 }
 
 .comment-content {
-  padding-top: 5px;
-  margin-left: 75px;
-  margin-bottom: 30px;
-}
+   padding-top: 5px;
+   margin-left: 75px;
+   margin-bottom: 30px;
+ }
+
+ .commentpost-content {
+   padding-top: 5px;
+   margin-bottom: 30px;
+ }
 
 @media (min-width: 768px) {
   .comment .comment {

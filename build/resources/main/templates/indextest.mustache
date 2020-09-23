@@ -31,63 +31,49 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <h2 class="module-title font-alt">판매차량목록</h2>
+                    <h2 class="module-title font-alt">직수입차량목록</h2>
                 </div>
             </div>
             <div class="row multi-columns-row">
+                {{#galleryList}}
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="shop-item">
-                        <div class="shop-item-image"><img src="/image/fer_test1.jpg" alt="Car Photo1"/>
-                            <div class="shop-item-detail"><a class="btn btn-round btn-b">자세히보기</a></div>
+                        <div class="shop-item-image"><img src="{{imgFullPath}}" alt="Car Photo1"/>
+                            <div class="shop-item-detail"><a class="btn btn-round btn-b" href="/importcar/detail/{{id}}">자세히보기</a></div>
                         </div>
-                        <h4 class="shop-item-title font-alt"><a href="#">페라리 포르토피노 3.9 V8</a></h4>
-                    </div>
-
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="shop-item">
-                        <div class="shop-item-image"><img src="/image/benz_s560_test1.jpg" alt="Car Photo2"/>
-                            <div class="shop-item-detail"><a class="btn btn-round btn-b">자세히보기</a></div>
-                        </div>
-                        <h4 class="shop-item-title font-alt"><a href="#">벤츠 S560</a></h4>
+                        <h4 class="shop-item-title font-alt"><a href="/importcar/detail/{{id}}">{{title}}</a></h4>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="shop-item">
-                        <div class="shop-item-image"><img src="/image/benz_s450_test2.jpg" alt="Car Photo3"/>
-                            <div class="shop-item-detail"><a class="btn btn-round btn-b">자세히보기</a></div>
-                        </div>
-                        <h4 class="shop-item-title font-alt"><a href="#">벤츠 S450</a></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="shop-item">
-                        <div class="shop-item-image"><img src="/image/bently_test1.jpg" alt="Car Photo4"/>
-                            <div class="shop-item-detail"><a class="btn btn-round btn-b">자세히보기</a></div>
-                        </div>
-                        <h4 class="shop-item-title font-alt"><a href="#">벤틀리 뮬산 6.8</a></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="shop-item">
-                        <div class="shop-item-image"><img src="/image/bmw_test1.jpg" alt="Car Photo5"/>
-                            <div class="shop-item-detail"><a class="btn btn-round btn-b">자세히보기</a></div>
-                        </div>
-                        <h4 class="shop-item-title font-alt"><a href="#">BMW X5 3세대 M50d</a></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
-                    <div class="shop-item">
-                        <div class="shop-item-image"><img src="/image/esc_test1.jpg" alt="Car Photo6"/>
-                            <div class="shop-item-detail"><a class="btn btn-round btn-b"><span class="icon-basket">자세히보기</span></a></div>
-                        </div>
-                        <h4 class="shop-item-title font-alt"><a href="#">캐딜락 올 뉴 에스컬레이드 6.2</a></h4>
-                    </div>
-                </div>
+                {{/galleryList}}
 
             </div>
             <div class="row mt-30">
-                <div class="col-sm-12 align-center"><a class="btn btn-b btn-round" href="#">전체 차량 보기</a></div>
+                <div class="col-sm-12 align-center"><a class="btn btn-b btn-round" href="/importcar">직수입 차량 보기</a></div>
+            </div>
+        </div>
+    </section>
+    <section class="module-small" id="latest">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">중고차량목록</h2>
+                </div>
+            </div>
+            <div class="row multi-columns-row">
+                {{#usedCarList}}
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        <div class="shop-item">
+                            <div class="shop-item-image"><img src="{{imgFullPath}}" alt="Car Photo1"/>
+                                <div class="shop-item-detail"><a class="btn btn-round btn-b" href="/usedcar/detail/{{id}}">자세히보기</a></div>
+                            </div>
+                            <h4 class="shop-item-title font-alt"><a href="/usedcar/detail/{{id}}">{{title}}</a></h4>
+                        </div>
+                    </div>
+                {{/usedCarList}}
+
+            </div>
+            <div class="row mt-30">
+                <div class="col-sm-12 align-center"><a class="btn btn-b btn-round" href="/importcar">중고 차량 보기</a></div>
             </div>
         </div>
     </section>

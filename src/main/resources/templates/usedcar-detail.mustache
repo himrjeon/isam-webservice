@@ -1,0 +1,188 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 mb-sm-40"><div class="gallery-item"><a class="gallerys" href="{{usedcar.imgFullPath}}"><img src="{{usedcar.imgFullPath}}" id="mainimg" alt="Single Product Image"/></a>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{usedcar.imgFullPath}}"></a><img src="{{usedcar.imgFullPath2}}"  alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath2}}"></a><img src="{{usedcar.imgFullPath2}}" alt="Single Product"/></li>
+                        <li><img src="{{usedcar.imgFullPath3}}" id="img1" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath4}}"></a><img src="{{usedcar.imgFullPath4}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath5}}"></a><img src="{{usedcar.imgFullPath5}}" alt="Single Product"/></li>
+                    </ul>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{usedcar.imgFullPath6}}"></a><img src="{{usedcar.imgFullPath6}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath7}}"></a><img src="{{usedcar.imgFullPath7}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath8}}"></a><img src="{{usedcar.imgFullPath8}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath9}}"></a><img src="{{usedcar.imgFullPath9}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath10}}"></a><img src="{{usedcar.imgFullPath10}}" alt="Single Product"/></li>
+                    </ul>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{usedcar.imgFullPath11}}"></a><img src="{{usedcar.imgFullPath11}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath12}}"></a><img src="{{usedcar.imgFullPath12}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath13}}"></a><img src="{{usedcar.imgFullPath13}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath14}}"></a><img src="{{usedcar.imgFullPath14}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath15}}"></a><img src="{{usedcar.imgFullPath15}}" alt="Single Product"/></li>
+                    </ul>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{usedcar.imgFullPath16}}"></a><img src="{{usedcar.imgFullPath16}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath17}}"></a><img src="{{usedcar.imgFullPath17}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath18}}"></a><img src="{{usedcar.imgFullPath18}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath19}}"></a><img src="{{usedcar.imgFullPath19}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{usedcar.imgFullPath20}}"></a><img src="{{usedcar.imgFullPath20}}" alt="Single Product"/></li>
+                    </ul>
+                </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="product-title font-alt">{{usedcar.title}}</h1>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-12"><a class="open-tab section-scroll" href="#reviews">판매여부 : {{usedcar.carsalecheck}} </a>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-12">
+                            <div class="price font-alt"><span class="amount">{{usedcar.carprice}}</span></div>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-12">
+                            <div class="description">
+                                <p>{{{usedcar.subcontent}}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-8"><a class="btn btn-lg btn-block btn-round btn-b" href="#reviews">문의하기</a></div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-70">
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs font-alt" role="tablist">
+                        <li class="active"><a href="#data-sheet" data-toggle="tab"><span class="icon-tools-2"></span>제원</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="data-sheet">
+                            <table class="table table-striped ds-table table-responsive">
+                                <tbody>
+                                <tr>
+                                    <th>기본정보</th>
+                                    <th>설명</th>
+                                </tr>
+                                <tr>
+                                    <td>제조사</td>
+                                    <td>{{usedcar.carmanufacturer}}</td>
+                                </tr>
+                                <tr>
+                                    <td>모델</td>
+                                    <td>{{usedcar.carmodel}}</td>
+                                </tr>
+                                <tr>
+                                    <td>세부모델</td>
+                                    <td>{{usedcar.carmodeldetail}}</td>
+                                </tr>
+                                <tr>
+                                    <td>등급</td>
+                                    <td>{{usedcar.cartrim}}</td>
+                                </tr>
+                                <tr>
+                                    <td>세부등급</td>
+                                    <td>{{usedcar.cartrimdetail}}</td>
+                                </tr>
+                                <tr>
+                                    <td>연식</td>
+                                    <td>{{usedcar.caryear}}</td>
+                                </tr>
+                                <tr>
+                                    <td>배기량</td>
+                                    <td>{{usedcar.carpower}} cc</td>
+                                </tr>
+                                <tr>
+                                    <td>주행거리</td>
+                                    <td>{{usedcar.cardistance}} km</td>
+                                </tr>
+                                <tr>
+                                    <td>색상</td>
+                                    <td>{{usedcar.carcolor}}</td>
+                                </tr>
+                                <tr>
+                                    <td>연료</td>
+                                    <td>{{usedcar.carfuel}}</td>
+                                </tr>
+                                <tr>
+                                    <td>변속기</td>
+                                    <td>{{usedcar.cartractor}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs font-alt" role="tablist">
+                        <li class="active"><a href="#description" data-toggle="tab"><span class="icon-tools-2"></span>차량설명</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="description">
+                            {{{usedcar.content}}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs font-alt" role="tablist">
+                        <li class="active"><a href="#reviews" data-toggle="tab"><span class="icon-tools-2"></span>구매문의</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="reviews">
+                            <div class="comment-form mt-30">
+                                <h4 class="comment-form-title font-alt">문의하기</h4>
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="name">성함</label>
+                                                <input class="form-control" type="text" id="guestname" name="guestname" placeholder="성함*" required="required" data-validation-required-message="성함"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="phone">Phone</label>
+                                                <input class="form-control" type="text" id="phonenum" name="phonenum" placeholder="연락처*" required="required" data-validation-required-message="연락처"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="email">Email</label>
+                                                <input class="form-control" type="email" id="email" name="email" placeholder="이메일 주소*" required="required" data-validation-required-message="이메일 주소"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="7" id="content" name="content" placeholder="문의내용" required="required" data-validation-required-message="문의내용"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-round btn-d" id="btn-carguest-submit" type="submit">문의하기</button>
+                                        </div>
+                                        <input type="hidden" id="carinfo" name="carinfo" value="{{usedcar.title}}"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footermain}}

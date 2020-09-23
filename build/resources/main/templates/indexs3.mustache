@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> SpringBoot & AWS S3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- Editor's Dependecy Style -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"
+    />
+    <!-- Editor's Style -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+
+</head>
+<input>
+<h1>
+    S3 이미지 업로더
+</h1>
+<div class="col-md-12">
+    <div class="col-md-2">
+        <form>
+            <div class="form-group">
+                <label for="img">파일 업로드</label>
+                <input type="file" id="img">
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-savee">저장</button>
+        </form>
+    </div>
+    <div class="col-md-10">
+        <p><strong>결과 이미지입니다.</strong></p>
+        <img src="" id="result-image">
+    </div>
+</div>
+<button type="button" class="btn btn-primary" id="btn-save">테스트</button>
+<input type="hidden" id="test" value=".">
+<div id="editor"></div>
+
+<script type="text/javascript" src="https://uicdn.toast.com/editor/2.0.0/toastui-editor-all.min.js"> </script>
+<script>
+   const editor = new toastui.Editor({
+        el: document.querySelector('#editor'),
+        height: '500px',
+        initialValue: 'content',
+        initialEditType: 'wysiwyg'
+      });
+
+      editor.setHtml('<h1>HELLO WORLD</h1>');
+      console.log(editor.getHtml());
+       var main = {
+    init : function () {
+       var _this = this;
+        $('#btn-save').on('click', function () {
+            _this.save();
+        });
+        },
+        save : function () {
+            var data = editor.getHtml();
+            document.getElementById("test").innerHTML = data;
+            }
+            };
+    main.init();
+</script>
+
+
+</body>
+</html>

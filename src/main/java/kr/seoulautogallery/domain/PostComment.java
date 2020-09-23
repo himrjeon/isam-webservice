@@ -14,7 +14,7 @@ public class PostComment extends BaseTimeEntity {
 
     @Id // 해당 테이블의 PK 필드를 나타냄
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK 생성규칙. indentity를 추가해야만 자동증가가능.
-    private Long id;
+    private Long commentid;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String memo;
@@ -30,10 +30,11 @@ public class PostComment extends BaseTimeEntity {
     private Posts posts;
 
     @Builder // 해당 클래스 빌더패턴 클래스 생성, 생성자 상단 선언시 생성자 포함된 필드만 빌더 포함
-    public PostComment(String memo, String author, String password) {
+    public PostComment(String memo, String author, String password, Posts posts) {
         this.memo = memo;
         this.author = author;
         this.password = password;
+        this.posts = posts;
 
     }
 
