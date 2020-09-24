@@ -45,30 +45,29 @@
                 <div class="col-sm-8 col-sm-offset-1">
                     <div class="carpost">
                         <div class="post-header font-alt">
-                            <h1 class="post-title">일반문의사항</h1>
+                            <h1 class="post-title">팝업 관리</h1>
                         </div>
                     </div>
                     <div class="post-entr">
                         <table class="table table-striped table-border checkout-table">
                             <tbody>
                             <tr>
-                                <th class="hidden-xs">게시글번호</th>
-                                <th>이름</th>
-                                <th class="hidden-xs">연락처</th>
-                                <th>이메일</th>
+                                <th class="hidden-xs">팝업명</th>
+                                <th>현재이미지</th>
+                                <th class="hidden-xs">현재링크</th>
                                 <th></th>
                             </tr>
-                            {{#guestbook}}
+                            {{#galleryList}}
                                 <tr>
-                                    <td class="hidden-xs">{{id}}</td>
-                                    <td><a href="/admin/contactus/detail/{{id}}">{{guestname}}</a></td>
-                                    <td>{{phonenum}}</td>
-                                    <td>{{email}}</td>
+                                    <td>{{title}}</td>
+                                    <td>{{linkpath}}</td>
+                                    <td>{{imgFullPath}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-danger" id="btn-contactus-delete">삭제</button>
+                                        <a href="/admin/popup/update/{{id}}">수정</a>
+                                        <button type="button" class="btn btn-danger" id="btn-popup-delete">삭제</button>
                                     </td>
                                 </tr>
-                            {{/guestbook}}
+                            {{/galleryList}}
                             </tbody>
                         </table>
                     </div>

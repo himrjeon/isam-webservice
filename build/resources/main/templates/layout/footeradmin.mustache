@@ -1,0 +1,215 @@
+<hr class="divider-d">
+<footer class="footer bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7">
+                <p class="copyright font-alt">업체명: (주)아이에스오토모빌(IS AUTO MOBILE)</p>
+                <p class="copyright font-alt">주소: 서울 서초구 양재대로11길 36 서울오토갤러리 은관 420호</p>
+                <p class="copyright font-alt">대표: 구인서</p>
+                <p class="copyright font-alt">사업자등록번호: 218-81-73253</p>
+                <p class="copyright font-alt">대표전화: 02)2059-8896</p>
+                <p class="copyright font-alt">이메일: isauto100@gmail.com</p>
+            </div>
+            <div class="col-sm-6">
+                <hr class="divider-d">
+                <p class="copyright font-alt">&copy; 2020<a href="index.html">CSLab</a>, All Rights Reserved</p>
+            </div>
+            <div class="col-sm-6">
+                <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+</main>
+
+<!--
+JavaScripts
+=============================================
+-->
+<script type="text/javascript" src="https://uicdn.toast.com/editor/2.0.0/toastui-editor-all.min.js"> </script>
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/lib/wow/dist/wow.js"></script>
+<script src="/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+<script src="/lib/isotope/dist/isotope.pkgd.js"></script>
+<script src="/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+<script src="/lib/flexslider/jquery.flexslider.js"></script>
+<script src="/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="/lib/smoothscroll.js"></script>
+<script src="/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+<script src="/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/app/index.js"></script>
+<script>
+   const editor = new toastui.Editor({
+        el: document.querySelector('#editor'),
+        height: '500px',
+        initialValue: 'content',
+        initialEditType: 'wysiwyg'
+      });
+
+   const editor2 = new toastui.Editor({
+        el: document.querySelector('#editor2'),
+        height: '150px',
+        initialValue: 'content',
+        initialEditType: 'wysiwyg'
+      });
+
+        function inputNumberAutoComma(obj) {
+
+        // 콤마( , )의 경우도 문자로 인식되기때문에 콤마를 따로 제거한다.
+        var deleteComma = obj.value.replace(/\,/g, "");
+
+        // 콤마( , )를 제외하고 문자가 입력되었는지를 확인한다.
+        if(isFinite(deleteComma) == false) {
+            alert("문자는 입력하실 수 없습니다.");
+            obj.value = "";
+            return false;
+        }
+
+        // 기존에 들어가있던 콤마( , )를 제거한 이 후의 입력값에 다시 콤마( , )를 삽입한다.
+        obj.value = inputNumberWithComma(inputNumberRemoveComma(obj.value));
+    }
+
+        function inputPriceNumberAutoComma(obj) {
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        return obj.toString().replace( regexp, ',' );
+        }
+
+
+
+    // 천단위 이상의 숫자에 콤마( , )를 삽입하는 함수
+    function inputNumberWithComma(str) {
+
+        str = String(str);
+        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+    }
+
+    // 콤마( , )가 들어간 값에 콤마를 제거하는 함수
+    function inputNumberRemoveComma(str) {
+
+        str = String(str);
+        return str.replace(/[^\d]+/g, "");
+    }
+
+
+
+
+       var main = {
+    init : function () {
+       var _this = this;
+        $('#btn-save1').on('click', function () {
+            _this.save();
+        });
+        $('#btn-save2').on('click', function () {
+            _this.save2();
+        });
+        $('#car-btn-save').on('click', function () {
+            _this.importcarsave();
+        });
+        $('#usedcar-btn-save').on('click', function () {
+            _this.usedcarsave();
+        });
+        },
+        save : function () {
+            var data = editor.getHtml();
+            document.getElementById("test").value = data;
+            },
+
+        save2 : function () {
+            var data = editor2.getHtml();
+            document.getElementById("test2").value = data;
+            },
+
+         importcarsave : function () {
+         var mcontent = editor.getHtml();
+         document.getElementById("test").value = mcontent;
+         var scontent = editor2.getHtml();
+         document.getElementById("test2").value = scontent;
+          var form = $('#insertForm')[0];
+                var formData = new FormData(form);
+                formData.append("file", $("#file")[0].files[0]);
+                formData.append("file2", $("#file2")[0].files[0]);
+                formData.append("file3", $("#file3")[0].files[0]);
+                formData.append("file4", $("#file4")[0].files[0]);
+                formData.append("file5", $("#file5")[0].files[0]);
+                formData.append("file6", $("#file6")[0].files[0]);
+                formData.append("file7", $("#file7")[0].files[0]);
+                formData.append("file8", $("#file8")[0].files[0]);
+                formData.append("file9", $("#file9")[0].files[0]);
+                formData.append("file10", $("#file10")[0].files[0]);
+                formData.append("file11", $("#file11")[0].files[0]);
+                formData.append("file12", $("#file12")[0].files[0]);
+                formData.append("file13", $("#file13")[0].files[0]);
+                formData.append("file14", $("#file14")[0].files[0]);
+                formData.append("file15", $("#file15")[0].files[0]);
+                formData.append("file16", $("#file16")[0].files[0]);
+                formData.append("file17", $("#file17")[0].files[0]);
+                formData.append("file18", $("#file18")[0].files[0]);
+                formData.append("file19", $("#file19")[0].files[0]);
+                formData.append("file20", $("#file20")[0].files[0]);
+            $.ajax({
+                        type: 'POST',
+                        url: '/api/v2/importcars',
+                        processData: false,
+                        contentType: false,
+                        data: formData
+                    }).done(function() {
+                        alert('차량이 등록되었습니다.');
+                        window.location.href = '/admin/importcar';
+                    }).fail(function (error) {
+                        alert(JSON.stringify(error));
+                    });
+                    },
+
+         usedcarsave : function () {
+         var mcontent = editor.getHtml();
+         document.getElementById("test").value = mcontent;
+         var scontent = editor2.getHtml();
+         document.getElementById("test2").value = scontent;
+          var form = $('#insertForm')[0];
+                var formData = new FormData(form);
+                formData.append("file", $("#file")[0].files[0]);
+                formData.append("file2", $("#file2")[0].files[0]);
+                formData.append("file3", $("#file3")[0].files[0]);
+                formData.append("file4", $("#file4")[0].files[0]);
+                formData.append("file5", $("#file5")[0].files[0]);
+                formData.append("file6", $("#file6")[0].files[0]);
+                formData.append("file7", $("#file7")[0].files[0]);
+                formData.append("file8", $("#file8")[0].files[0]);
+                formData.append("file9", $("#file9")[0].files[0]);
+                formData.append("file10", $("#file10")[0].files[0]);
+                formData.append("file11", $("#file11")[0].files[0]);
+                formData.append("file12", $("#file12")[0].files[0]);
+                formData.append("file13", $("#file13")[0].files[0]);
+                formData.append("file14", $("#file14")[0].files[0]);
+                formData.append("file15", $("#file15")[0].files[0]);
+                formData.append("file16", $("#file16")[0].files[0]);
+                formData.append("file17", $("#file17")[0].files[0]);
+                formData.append("file18", $("#file18")[0].files[0]);
+                formData.append("file19", $("#file19")[0].files[0]);
+                formData.append("file20", $("#file20")[0].files[0]);
+            $.ajax({
+                        type: 'POST',
+                        url: '/api/v2/usedcars',
+                        processData: false,
+                        contentType: false,
+                        data: formData
+                    }).done(function() {
+                        alert('차량이 등록되었습니다.');
+                        window.location.href = '/admin/usedcar';
+                    }).fail(function (error) {
+                        alert(JSON.stringify(error));
+                    });
+                    }
+
+            };
+
+    main.init();
+</script>
+</body>
+</html>

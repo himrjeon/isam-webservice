@@ -111,6 +111,11 @@ public class IndexController {
         return "indexs3";
     }
 
+    @GetMapping("/event01")
+    public String eventpop() {
+        return "event_01";
+    }
+
 
 
 

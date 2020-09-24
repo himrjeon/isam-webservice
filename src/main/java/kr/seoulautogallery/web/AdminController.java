@@ -5,11 +5,9 @@ import kr.seoulautogallery.config.auth.dto.SessionUser;
 import kr.seoulautogallery.service.cars.S3Service;
 import kr.seoulautogallery.service.cars.ImportCarsS3UploadService;
 import kr.seoulautogallery.service.cars.UsedCarsS3UploadService;
+import kr.seoulautogallery.service.popup.PopUpS3UploadService;
 import kr.seoulautogallery.service.posts.*;
-import kr.seoulautogallery.web.dto.CarGuestBookResponseDto;
-import kr.seoulautogallery.web.dto.GuestBookResponseDto;
-import kr.seoulautogallery.web.dto.ImportCarsDto;
-import kr.seoulautogallery.web.dto.UsedCarsDto;
+import kr.seoulautogallery.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +21,7 @@ import java.util.List;
 @Controller
 public class AdminController {
 
-    private final PostsService postsService;
+    private final PopUpS3UploadService popUpS3UploadService;
     private final NoticeService noticeService;
     private final NewsService newsServices;
     private final HttpSession httpSession;
@@ -129,6 +127,17 @@ public class AdminController {
         }
 
         return "admin-carcontact-detail";
+    }
+
+    @GetMapping("/admin/popup")
+    public String adminpopup(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+        List<PopupDto> popupDtoList = popUpS3UploadService.getList();
+        model.addAttribute("galleryList", popupDtoList);
+
+        return "admin-popup";
     }
 
 
