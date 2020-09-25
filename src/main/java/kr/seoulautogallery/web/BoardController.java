@@ -61,8 +61,13 @@ public class BoardController {
         Posts entity = postsRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
         model.addAttribute("comment",postCommentService.findALLByPost(entity));
 
+        String writeUser = dto.getAuthor();
+
         if(user != null) {
             model.addAttribute("uName", user.getName());
+            if(writeUser.equals(user.getName())) {
+                model.addAttribute("writeUser", writeUser);
+            }
         }
 
         return "posts-detail";
@@ -187,6 +192,7 @@ public class BoardController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
 
         return "notice-detail";
     }

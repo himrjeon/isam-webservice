@@ -25,6 +25,9 @@
                             <p>{{news.content}}</p>
                         </div>
                         <a href="/news" role="button" class="btn btn-secondary">목록보기</a>
+                        {{#writeUser}}
+                            <a href="/news/update/{{news.id}}" role="button" class="btn btn-secondary">수정하기</a>
+                        {{/writeUser}}
                     </div>
                 </div>
             </div>

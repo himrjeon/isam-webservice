@@ -25,7 +25,7 @@ public class UsedCarsS3UploadService {
     }
 
     public List<UsedCarsDto> getList() {
-        List<UsedCars> galleryEntityList = usedCarsRepository.findAll();
+        List<UsedCars> galleryEntityList = usedCarsRepository.findAllDesc();
         List<UsedCarsDto> galleryDtoList = new ArrayList<>();
 
         for (UsedCars galleryEntity : galleryEntityList) {

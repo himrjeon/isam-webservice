@@ -9,6 +9,9 @@ public interface UsedCarsRepository extends JpaRepository<UsedCars, Long> {
     @Override
     List<UsedCars> findAll();
 
+    @Query("SELECT p FROM UsedCars p ORDER BY p.id DESC")
+    List<UsedCars> findAllDesc();
+
     @Query(nativeQuery = true, value = "SELECT * FROM usedcar p ORDER BY p.id DESC LIMIT 6")
     List<UsedCars> findTop6Desc();
 
