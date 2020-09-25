@@ -1,5 +1,4 @@
 {{>layout/headeradmin}}
-
 <div class="main">
     <section class="module-small">
         <div class="container">
@@ -43,39 +42,45 @@
                     </div>
                 </div>
                 <div class="col-sm-8 col-sm-offset-1">
-                    <div class="carpost">
+                    <div class="post">
                         <div class="post-header font-alt">
                             <h1 class="post-title">팝업 관리</h1>
+                            <div class="post-meta">By&nbsp;<a href="#">관리자</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="post-entr">
-                        <table class="table table-striped table-border checkout-table">
-                            <tbody>
-                            <tr>
-                                <th>번호</th>
-                                <th class="hidden-xs">팝업명</th>
-                                <th>현재링크</th>
-                                <th class="hidden-xs">현재이미지</th>
-                                <th></th>
-                            </tr>
-                            {{#galleryList}}
-                                <tr>
-                                    <td id="id">{{id}}</td>
-                                    <td>{{title}}</td>
-                                    <td>{{linkPath}}</td>
-                                    <td>{{imgFullPath}}</td>
-                                    <td>
-                                        <a href="/admin/popup/update/{{id}}">수정</a>
-                                        <button type="button" class="btn btn-danger" id="btn-popup-delete">삭제</button>
-                                    </td>
-                                </tr>
-                            {{/galleryList}}
-                            </tbody>
-                        </table>
+                        <div class="post-entry">
+                            <form id="insertForm" action="/popup/upload" method="post" enctype="multipart/form-data">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        제목
+                                        <input class="form-control" type="text" id="title" name="title" placeholder="제목">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        링크경로
+                                        <input class="form-control" type="text" id="linkPath" name="linkPath" placeholder="링크경로">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        파일경로
+                                        <input class="form-control" type="file" id="file" name="file">
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="popup-btn-save">등록하기</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
 
 {{>layout/footeradmin}}

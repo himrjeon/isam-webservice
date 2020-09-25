@@ -61,7 +61,23 @@ var main = {
                     _this.carguestsave();
         });
 
+                $('#popup-btn-save').on('click', function () {
+                    _this.popupsave();
+                });
 
+                $('#popup-btn-update').on('click', function () {
+                    _this.popupdate();
+                });
+
+                $('#btn-popup-delete').on('click', function () {
+                    _this.popupdelete();
+                });
+        $('#car-btn-delete').on('click', function () {
+            _this.importcardelete();
+        });
+        $('#usedcar-btn-delete').on('click', function () {
+            _this.usedcardelete();
+        });
 
         },
     save : function () {
@@ -396,7 +412,87 @@ var main = {
                          alert(JSON.stringify(error));
                      });
 
-                  }
+                  },
+                           popupsave : function () {
+                            var form = $('#insertForm')[0];
+                                  var formData = new FormData(form);
+                                  formData.append("file", $("#file")[0].files[0]);
+                              $.ajax({
+                                          type: 'POST',
+                                          url: '/api/v2/popsave',
+                                          processData: false,
+                                          contentType: false,
+                                          data: formData
+                                      }).done(function() {
+                                          alert('팝업이 등록되었습니다.');
+                                          window.location.href = '/admin/popup';
+                                      }).fail(function (error) {
+                                          alert(JSON.stringify(error));
+                                      });
+                                      },
+
+                       popupdate : function() {
+                                  var form = $('#insertForm')[0];
+                                  var formData = new FormData(form);
+                                  formData.append("file", $("#file")[0].files[0]);
+                                  var id = $('#id').val();
+                              $.ajax({
+                                  type: 'POST',
+                                  url: '/api/v2/popup/'+id,
+                                  processData: false,
+                                  contentType: false,
+                                  data: formData
+                              }).done(function() {
+                                  alert('팝업이 등록되었습니다.');
+                                  window.location.href = '/admin/popup';
+                              }).fail(function (error) {
+                                  alert(JSON.stringfy(error));
+                              });
+                       },
+                       popupdelete : function() {
+                                  var id = $('#id').val();
+                         $.ajax({
+                         type: 'DELETE',
+                         url: '/api/v2/popup/delete/'+id,
+                         dataType: 'json',
+                         contentType: 'application/json; charset=utf-8'
+                     }).done(function() {
+                         alert('팝업이 삭제되었습니다. ');
+                         window.location.reload();
+                     }).fail(function (error) {
+                         alert(JSON.stringify(error));
+                     });
+                       },
+
+                       importcardelete : function() {
+                                  var id = $('#id').val();
+                         $.ajax({
+                         type: 'DELETE',
+                         url: '/api/v2/importcar/delete/'+id,
+                         dataType: 'json',
+                         contentType: 'application/json; charset=utf-8'
+                     }).done(function() {
+                         alert('차량이 삭제되었습니다. ');
+                         window.location.reload();
+                     }).fail(function (error) {
+                         alert(JSON.stringify(error));
+                     });
+                       },
+
+                       usedcardelete : function() {
+                                  var id = $('#id').val();
+                         $.ajax({
+                         type: 'DELETE',
+                         url: '/api/v2/usedcar/delete/'+id,
+                         dataType: 'json',
+                         contentType: 'application/json; charset=utf-8'
+                     }).done(function() {
+                         alert('차량이 삭제되었습니다. ');
+                         window.location.reload();
+                     }).fail(function (error) {
+                         alert(JSON.stringify(error));
+                     });
+                       }
 
     };
     main.init();

@@ -90,9 +90,8 @@
                                         <a href="/usedcar/update/{{id}}">
                                             <h7 class="product-title font-alt">수정</h7>
                                         </a>
-                                        <a href="/usedcar/delete/{{id}}">
-                                            <h7 class="product-title font-alt">삭제</h7>
-                                        </a>
+                                        <input type="hidden" id="id" value="{{id}}">
+                                        <button type="button" class="btn btn-danger" id="usedcar-btn-delete">삭제</button>
                                     </td>
                                 </tr>
                             {{/galleryList}}

@@ -60,6 +60,18 @@ public class CarsController {
         return "importcar-detail";
     }
 
+    @GetMapping("/importcar/update/{id}")
+    public String importCarsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        ImportCarsDto dto = importCarsS3UploadService.findById(id);
+        model.addAttribute("importcar",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        return "importcar-update";
+    }
+
     @PostMapping("/importcar/upload")
     @ResponseBody
     public String upload(ImportCarsDto importCarsDto, MultipartFile file, MultipartFile file2, MultipartFile file3, MultipartFile file4, MultipartFile file5, MultipartFile file6, MultipartFile file7, MultipartFile file8, MultipartFile file9, MultipartFile file10, MultipartFile file11, MultipartFile file12, MultipartFile file13, MultipartFile file14, MultipartFile file15, MultipartFile file16, MultipartFile file17, MultipartFile file18, MultipartFile file19, MultipartFile file20) throws IOException {
@@ -190,6 +202,18 @@ public class CarsController {
         usedCarsS3UploadService.savePost(usedCarsDto);
 
         return "usedcar";
+    }
+
+    @GetMapping("/usedcar/update/{id}")
+    public String usedCarsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        UsedCarsDto dto = usedCarsS3UploadService.findById(id);
+        model.addAttribute("usedcar",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        return "usedcar-update";
     }
 
 

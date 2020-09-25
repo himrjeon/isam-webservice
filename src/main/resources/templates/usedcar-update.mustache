@@ -37,28 +37,35 @@
                     <div class="widget">
                         <h5 class="widget-title font-alt">홈페이지 관리</h5>
                         <ul class="icon-list">
-                            <li><a href="#">개발 예정</a></li>
+                            <li><a href="/admin/popup">팝업 관리</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-8 col-sm-offset-1">
                     <div class="post">
                         <div class="post-header font-alt">
-                            <h1 class="post-title">중고차량등록</h1>
+                            <h1 class="post-title">차량 수정</h1>
                             <div class="post-meta">By&nbsp;<a href="#">관리자</a>
                             </div>
                         </div>
                         <div class="post-entry">
-                            <form id="insertForm" action="/usedcar/upload" method="post" enctype="multipart/form-data">
+                            <form id="insertForm" action="/importcar/upload" method="post" enctype="multipart/form-data">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        상품제목<input class="form-control" type="text" id="title" name="title" placeholder="제목">
+                                        상품제목<input class="form-control" type="text" id="title" name="title" placeholder="제목" value="{{usedcar.title}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         판매여부
                                         <select id="carsalecheck" name="carsalecheck" class="form-control">
+                                            {{#usedcar.carsalecheck}}
+                                                <option value="{{usedcar.carsalecheck}}" selected="selected">{{usedcar.carsalecheck}}</option>
+                                            {{/usedcar.carsalecheck}}
+                                            <option value="계약완료">계약완료</option>
+                                            <option value="입항예정">입항예정</option>
+                                            <option value="통관진행중">톻관진행중</option>
+                                            <option value="인증중">인증중</option>
                                             <option value="판매중">판매중</option>
                                             <option value="판매완료">판매완료</option>
                                         </select>
@@ -67,81 +74,102 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         가격
-                                        <input class="form-control" type="text" id="carprice" name="carprice" onKeyup="inputPriceNumberAutoComma(this);" placeholder="가격(원)">
+                                        <input class="form-control" type="text" id="carprice" name="carprice" onKeyup="inputPriceNumberAutoComma(this);" placeholder="가격(원)" value="{{usedcar.carprice}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         제조사
-                                        <input class="form-control" type="text" id="carmanufacturer" name="carmanufacturer" placeholder="제조사">
+                                        <input class="form-control" type="text" id="carmanufacturer" name="carmanufacturer" placeholder="제조사" value="{{usedcar.carmanufacturer}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         모델명
-                                        <input class="form-control" type="text" id="carmodel" name="carmodel" placeholder="모델명">
+                                        <input class="form-control" type="text" id="carmodel" name="carmodel" placeholder="모델명" value="{{usedcar.carmodel}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         세부모델명
-                                        <input class="form-control" type="text" id="carmodeldetail" name="carmodeldetail" placeholder="세부모델명">
+                                        <input class="form-control" type="text" id="carmodeldetail" name="carmodeldetail" placeholder="세부모델명" value="{{usedcar.carmodeldetail}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         등급명
-                                        <input class="form-control" type="text" id="cartrim" name="cartrim" placeholder="등급명">
+                                        <input class="form-control" type="text" id="cartrim" name="cartrim" placeholder="등급명" value="{{usedcar.cartrim}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         세부등급명
-                                        <input class="form-control" type="text" id="cartrimdetail" name="cartrimdetail" placeholder="세부등급명">
+                                        <input class="form-control" type="text" id="cartrimdetail" name="cartrimdetail" placeholder="세부등급명" value="{{usedcar.cartrimdetail}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         연식
-                                        <input class="form-control" type="text" id="caryear" name="caryear" placeholder="연식">
+                                        <input class="form-control" type="text" id="caryear" name="caryear" placeholder="연식" value="{{usedcar.caryear}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         주행거리
-                                        <input class="form-control" type="text" id="cardistance" name="cardistance" onKeyup="inputNumberAutoComma(this);" placeholder="주행거리(km)">
+                                        <input class="form-control" type="text" id="cardistance" name="cardistance" onKeyup="inputNumberAutoComma(this);" placeholder="주행거리(km)" value="{{usedcar.cardistance}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         배기량
-                                        <input class="form-control" type="text" id="carpower" name="carpower" onKeyup="inputNumberAutoComma(this);" placeholder="배기량(cc)">
+                                        <input class="form-control" type="text" id="carpower" name="carpower" onKeyup="inputNumberAutoComma(this);" placeholder="배기량(cc)" value="{{usedcar.carpower}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         변속기
-                                        <input class="form-control" type="text" id="cartransmission" name="cartransmission" placeholder="변속기">
+                                        <input class="form-control" type="text" id="cartransmission" name="cartransmission" placeholder="변속기" value="{{usedcar.cartransmission}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         색상
-                                        <input class="form-control" type="text" id="carcolor" name="carcolor" placeholder="색상">
+                                        <input class="form-control" type="text" id="carcolor" name="carcolor" placeholder="색상" value="{{usedcar.carcolor}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         연료
-                                        <input class="form-control" type="text" id="carfuel" name="carfuel" placeholder="연료">
+                                        <input class="form-control" type="text" id="carfuel" name="carfuel" placeholder="연료"  value="{{usedcar.carfuel}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         구동방식
-                                        <input class="form-control" type="text" id="cartractor" name="cartractor" placeholder="구동방식">
+                                        <input class="form-control" type="text" id="cartractor" name="cartractor" placeholder="구동방식" value="{{usedcar.cartractor}}">
                                     </div>
                                 </div>
+                                <input type="hidden" name="id" id="id" value="{{usedcar.id}}">
+                                <input type="hidden" name="filePath" id="filePath" value="{{usedcar.filePath}}">
+                                <input type="hidden" name="filePath2" id="filePath2" value="{{usedcar.filePath2}}">
+                                <input type="hidden" name="filePath3" id="filePath3" value="{{usedcar.filePath3}}">
+                                <input type="hidden" name="filePath4" id="filePath4" value="{{usedcar.filePath4}}">
+                                <input type="hidden" name="filePath5" id="filePath5" value="{{usedcar.filePath5}}">
+                                <input type="hidden" name="filePath6" id="filePath6" value="{{usedcar.filePath6}}">
+                                <input type="hidden" name="filePath7" id="filePath7" value="{{usedcar.filePath7}}">
+                                <input type="hidden" name="filePath8" id="filePath8" value="{{usedcar.filePath8}}">
+                                <input type="hidden" name="filePath9" id="filePath9" value="{{usedcar.filePath9}}">
+                                <input type="hidden" name="filePath10" id="filePath10" value="{{usedcar.filePath10}}">
+                                <input type="hidden" name="filePath11" id="filePath11" value="{{usedcar.filePath11}}">
+                                <input type="hidden" name="filePath12" id="filePath12" value="{{usedcar.filePath12}}">
+                                <input type="hidden" name="filePath13" id="filePath13" value="{{usedcar.filePath13}}">
+                                <input type="hidden" name="filePath14" id="filePath14" value="{{usedcar.filePath14}}">
+                                <input type="hidden" name="filePath15" id="filePath15" value="{{usedcar.filePath15}}">
+                                <input type="hidden" name="filePath16" id="filePath16" value="{{usedcar.filePath16}}">
+                                <input type="hidden" name="filePath17" id="filePath17" value="{{usedcar.filePath17}}">
+                                <input type="hidden" name="filePath18" id="filePath18" value="{{usedcar.filePath18}}">
+                                <input type="hidden" name="filePath19" id="filePath19" value="{{usedcar.filePath19}}">
+                                <input type="hidden" name="filePath20" id="filePath20" value="{{usedcar.filePath20}}">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         차량대표사진
@@ -263,8 +291,8 @@
                                     </div>
                                 </div>
                                 <div style="display:none">
-                                    <input type="textarea" id="test"  name="content">
-                                    <input type="textarea" id="test2" name="subcontent">
+                                    <textarea id="test"  name="content">{{{usedcar.content}}}</textarea>
+                                    <textarea id="test2" name="subcontent">{{{usedcar.subcontent}}}</textarea>
                                 </div>
                             </form>
                             <div class="col-sm-12">
@@ -282,7 +310,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="usedcar-btn-save">등록하기</button>
+                                    <button type="button" class="btn btn-primary" id="usedcar-btn-update">수정하기</button>
                                 </div>
                             </div>
 

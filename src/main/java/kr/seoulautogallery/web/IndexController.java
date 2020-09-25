@@ -4,9 +4,11 @@ import kr.seoulautogallery.config.auth.LoginUser;
 import kr.seoulautogallery.config.auth.dto.SessionUser;
 import kr.seoulautogallery.service.cars.ImportCarsS3UploadService;
 import kr.seoulautogallery.service.cars.UsedCarsS3UploadService;
+import kr.seoulautogallery.service.popup.PopUpS3UploadService;
 import kr.seoulautogallery.service.posts.NoticeService;
 import kr.seoulautogallery.service.posts.PostsService;
 import kr.seoulautogallery.web.dto.ImportCarsDto;
+import kr.seoulautogallery.web.dto.PopupDto;
 import kr.seoulautogallery.web.dto.UsedCarsDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,7 @@ public class IndexController {
     private final HttpSession httpSession;
     private final ImportCarsS3UploadService importCarsS3UploadService;
     private final UsedCarsS3UploadService usedCarsS3UploadService;
+    private final PopUpS3UploadService popUpS3UploadService;
 
     @GetMapping("/indexx")
     public String index(Model model, @LoginUser SessionUser user) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
@@ -109,11 +112,6 @@ public class IndexController {
             model.addAttribute("uName", user.getName());
         }
         return "indexs3";
-    }
-
-    @GetMapping("/event01")
-    public String eventpop() {
-        return "event_01";
     }
 
 

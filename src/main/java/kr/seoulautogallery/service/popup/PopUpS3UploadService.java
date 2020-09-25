@@ -1,11 +1,14 @@
 package kr.seoulautogallery.service.popup;
 
+import kr.seoulautogallery.domain.Notice;
 import kr.seoulautogallery.domain.Popup;
 import kr.seoulautogallery.domain.PopupRepository;
 import kr.seoulautogallery.service.cars.S3Service;
+import kr.seoulautogallery.web.dto.NoticeUpdateRequestDto;
 import kr.seoulautogallery.web.dto.PopupDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,22 @@ public class PopUpS3UploadService {
         PopupDto dto = convertEntityToDto(entity);
 
         return dto;
+    }
+
+    @Transactional
+    public Long update(Long id, PopupDto requestDto) {
+        Popup entity = popupRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
+
+        entity.update(requestDto.getTitle(), requestDto.getLinkPath(), requestDto.getFilePath());
+
+        return id;
+    }
+
+    @Transactional
+    public void delete (Long id) {
+        Popup notice = popupRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        popupRepository.delete(notice);
     }
 
 

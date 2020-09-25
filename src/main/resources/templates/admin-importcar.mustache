@@ -42,7 +42,7 @@
                         </ul>
                     </div>
                 </div>
-                <div style="float:left;">
+                <div class="col-sm-8 col-sm-offset-1">
                     <div class="carpost">
                         <div class="post-header font-alt">
                             <h1 class="post-title">차량 목록</h1>
@@ -90,9 +90,8 @@
                                         <a href="/importcar/update/{{id}}">
                                             <h7 class="product-title font-alt">수정</h7>
                                         </a>
-                                        <a href="/importcar/delete/{{id}}">
-                                            <h7 class="product-title font-alt">삭제</h7>
-                                        </a>
+                                        <input type="hidden" id="id" value="{{id}}">
+                                        <button type="button" class="btn btn-danger" id="car-btn-delete">삭제</button>
                                     </td>
                                 </tr>
                             {{/galleryList}}

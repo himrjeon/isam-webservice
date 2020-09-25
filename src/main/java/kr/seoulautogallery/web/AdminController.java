@@ -140,5 +140,33 @@ public class AdminController {
         return "admin-popup";
     }
 
+    @GetMapping("/admin/popup/save")
+    public String adminpopSave(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+        return "admin-popup-save";
+    }
+
+    @GetMapping("/admin/popup/update/{id}")
+    public String popupDetail(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        PopupDto dto = popUpS3UploadService.findById(id);
+        model.addAttribute("popup",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        return "admin-popup-update";
+    }
+
+    @GetMapping("/event/{id}")
+    public String eventpop(@PathVariable Long id, Model model) {
+        PopupDto dto = popUpS3UploadService.findById(id);
+        model.addAttribute("popup",dto);
+
+        return "event_01";
+    }
+
 
 }

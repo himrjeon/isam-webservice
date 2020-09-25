@@ -31,4 +31,12 @@ public class Popup extends BaseTimeEntity {
         this.linkPath = linkPath;
         this.filePath = filePath;
     }
+
+    public void update(String title, String linkPath, String filePath) {
+        this.title = title;
+        this.linkPath = linkPath;
+        this.filePath = filePath;
+    }
+
+
 }

@@ -169,4 +169,47 @@ public class ImportCars extends BaseTimeEntity {
         this.filePath19 = filePath19;
         this.filePath20 = filePath20;
     }
+
+
+    public void update(String title, String caryear, String cardistance, String carprice, String carpower, String cartransmission, String carcolor, String carmanufacturer, String carmodel, String carfuel, String cartrim, String cartractor, String carmodeldetail, String cartrimdetail, String carsalecheck, String subcontent, String filePath, String filePath2, String filePath3, String filePath4, String filePath5, String filePath6, String filePath7, String filePath8, String filePath9, String filePath10, String filePath11, String filePath12, String filePath13, String filePath14, String filePath15, String filePath16, String filePath17, String filePath18, String filePath19, String filePath20, String content) {
+        this.title = title;
+        this.caryear = caryear;
+        this.cardistance = cardistance;
+        this.carpower = carpower;
+        this.cartransmission = cartransmission;
+        this.carcolor = carcolor;
+        this.carmanufacturer = carmanufacturer;
+        this.carmodel = carmodel;
+        this.carfuel = carfuel;
+        this.cartrim = cartrim;
+        this.cartractor = cartractor;
+        this.carprice = carprice;
+        this.carmodeldetail = carmodeldetail;
+        this.cartrimdetail = cartrimdetail;
+        this.carsalecheck = carsalecheck;
+        this.subcontent = subcontent;
+        this.content = content;
+        this.filePath = filePath;
+        this.filePath2 = filePath2;
+        this.filePath3 = filePath3;
+        this.filePath4 = filePath4;
+        this.filePath5 = filePath5;
+        this.filePath6 = filePath6;
+        this.filePath7 = filePath7;
+        this.filePath8 = filePath8;
+        this.filePath9 = filePath9;
+        this.filePath10 = filePath10;
+        this.filePath11 = filePath11;
+        this.filePath12 = filePath12;
+        this.filePath13 = filePath13;
+        this.filePath14 = filePath14;
+        this.filePath15 = filePath15;
+        this.filePath16 = filePath16;
+        this.filePath17 = filePath17;
+        this.filePath18 = filePath18;
+        this.filePath19 = filePath19;
+        this.filePath20 = filePath20;
+    }
+
+
 }

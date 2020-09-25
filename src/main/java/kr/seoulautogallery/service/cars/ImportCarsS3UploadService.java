@@ -1,10 +1,9 @@
 package kr.seoulautogallery.service.cars;
 
-import kr.seoulautogallery.domain.ImportCarsRepository;
-import kr.seoulautogallery.domain.ImportCars;
-import kr.seoulautogallery.domain.Posts;
+import kr.seoulautogallery.domain.*;
 import kr.seoulautogallery.web.dto.ImportCarsDto;
 import kr.seoulautogallery.web.dto.NoticeListResponseDto;
+import kr.seoulautogallery.web.dto.PopupDto;
 import kr.seoulautogallery.web.dto.PostsResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,6 +40,22 @@ public class ImportCarsS3UploadService {
         ImportCarsDto dto = convertEntityToDto(entity);
 
         return dto;
+    }
+
+    @Transactional
+    public Long update(Long id, ImportCarsDto requestDto) {
+        ImportCars entity = importCarsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
+
+        entity.update(requestDto.getTitle(), requestDto.getCaryear(), requestDto.getCardistance(), requestDto.getCarprice(), requestDto.getCarpower(), requestDto.getCartransmission(), requestDto.getCarcolor(), requestDto.getCarmanufacturer(), requestDto.getCarmodel(), requestDto.getCarfuel(), requestDto.getCartrim(), requestDto.getCartractor(), requestDto.getCarmodeldetail(), requestDto.getCartrimdetail(), requestDto.getCarsalecheck(), requestDto.getSubcontent(), requestDto.getFilePath(), requestDto.getFilePath2(), requestDto.getFilePath3(), requestDto.getFilePath4(), requestDto.getFilePath5(), requestDto.getFilePath6(), requestDto.getFilePath7(), requestDto.getFilePath8(), requestDto.getFilePath9(), requestDto.getFilePath10(), requestDto.getFilePath11(), requestDto.getFilePath12(), requestDto.getFilePath13(), requestDto.getFilePath14(), requestDto.getFilePath15(), requestDto.getFilePath16(), requestDto.getFilePath17(), requestDto.getFilePath18(), requestDto.getFilePath19(), requestDto.getFilePath20(), requestDto.getContent());
+
+        return id;
+    }
+
+    @Transactional
+    public void delete (Long id) {
+        ImportCars notice = importCarsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        importCarsRepository.delete(notice);
     }
 
     @Transactional(readOnly = true)

@@ -1,8 +1,11 @@
 package kr.seoulautogallery.service.cars;
 
 
+import kr.seoulautogallery.domain.ImportCars;
+import kr.seoulautogallery.domain.Popup;
 import kr.seoulautogallery.domain.UsedCars;
 import kr.seoulautogallery.domain.UsedCarsRepository;
+import kr.seoulautogallery.web.dto.ImportCarsDto;
 import kr.seoulautogallery.web.dto.UsedCarsDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -50,6 +53,22 @@ public class UsedCarsS3UploadService {
         }
 
         return galleryDtoList;
+    }
+
+    @Transactional
+    public Long update(Long id, UsedCarsDto requestDto) {
+        UsedCars entity = usedCarsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
+
+        entity.update(requestDto.getTitle(), requestDto.getCaryear(), requestDto.getCardistance(), requestDto.getCarprice(), requestDto.getCarpower(), requestDto.getCartransmission(), requestDto.getCarcolor(), requestDto.getCarmanufacturer(), requestDto.getCarmodel(), requestDto.getCarfuel(), requestDto.getCartrim(), requestDto.getCartractor(), requestDto.getCarmodeldetail(), requestDto.getCartrimdetail(), requestDto.getCarsalecheck(), requestDto.getSubcontent(), requestDto.getFilePath(), requestDto.getFilePath2(), requestDto.getFilePath3(), requestDto.getFilePath4(), requestDto.getFilePath5(), requestDto.getFilePath6(), requestDto.getFilePath7(), requestDto.getFilePath8(), requestDto.getFilePath9(), requestDto.getFilePath10(), requestDto.getFilePath11(), requestDto.getFilePath12(), requestDto.getFilePath13(), requestDto.getFilePath14(), requestDto.getFilePath15(), requestDto.getFilePath16(), requestDto.getFilePath17(), requestDto.getFilePath18(), requestDto.getFilePath19(), requestDto.getFilePath20(), requestDto.getContent());
+
+        return id;
+    }
+
+    @Transactional
+    public void delete (Long id) {
+        UsedCars notice = usedCarsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        usedCarsRepository.delete(notice);
     }
 
 
