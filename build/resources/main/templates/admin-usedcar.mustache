@@ -58,17 +58,15 @@
                                 <th>주행거리</th>
                                 <th>색상</th>
                                 <th>등록일</th>
-                                <th>가격</th>
-                                <th></th>
                             </tr>
                             {{#galleryList}}
                                 <tr>
-                                    <td class="hidden-xs"><a href="/usedcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
-                                    <td>
+                                    <td rowspan="3" class="hidden-xs"><a href="/usedcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
+                                    <td rowspan="3">
                                         <a href="/usedcar/detail/{{id}}">
-                                            <h7>{{title}}</h7>
+                                            <h7 class="product-title font-alt">{{title}}</h7>
                                             <h7>{{{subcontent}}}</h7>
-                                            <h7>{{carsalecheck}}</h7>
+                                            <h7 class="product-title font-alt">{{carsalecheck}}</h7>
                                         </a>
                                     </td>
                                     <td class="hidden-xs">
@@ -83,13 +81,21 @@
                                     <td>
                                         <h7 class="product-title font-alt">{{createdDate}}</h7>
                                     </td>
-                                    <td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <b>가격</b>
+                                    </td>
+                                    <td colspan="2">
+                                        <b>수정/삭제</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
                                         <h7 class="product-title font-alt">{{carprice}}</h7>
                                     </td>
-                                    <td>
-                                        <a href="/usedcar/update/{{id}}">
-                                            <h7 class="product-title font-alt">수정</h7>
-                                        </a>
+                                    <td colspan="2">
+                                        <button type="button" class="btn btn-primary" onclick="location.href='/usedcar/update/{{id}}'" >수정</button>
                                         <input type="hidden" id="id" value="{{id}}">
                                         <button type="button" class="btn btn-danger" id="usedcar-btn-delete">삭제</button>
                                     </td>

@@ -21,12 +21,11 @@
                             <th>주행거리</th>
                             <th>색상</th>
                             <th>등록일</th>
-                            <th>가격</th>
                         </tr>
                         {{#galleryList}}
                         <tr>
-                            <td class="hidden-xs"><a href="/importcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
-                            <td>
+                            <td rowspan="3" class="hidden-xs"><a href="/importcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
+                            <td rowspan="3">
                                 <a href="/importcar/detail/{{id}}">
                                 <h5 class="product-title font-alt">{{title}}</h5>
                                 <h7>{{{subcontent}}}</h7>
@@ -45,10 +44,17 @@
                             <td>
                                 <h5 class="product-title font-alt">{{createdDate}}</h5>
                             </td>
-                            <td>
-                                <h5 class="product-title font-alt">{{carprice}}</h5>
-                            </td>
                         </tr>
+                            <tr>
+                                <td colspan="4">
+                                <b>가격</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <h5 class="product-title font-alt">{{carprice}}</h5>
+                                </td>
+                            </tr>
                         {{/galleryList}}
                         </tbody>
                     </table>

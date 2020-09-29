@@ -813,7 +813,6 @@ a,
 /* Forms common style */
 .form-control {
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 11px;
   height: 33px;
@@ -889,7 +888,6 @@ blockquote {
 
 .font-alt {
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
 }
 
@@ -2241,7 +2239,6 @@ Google map
 .pagination a {
   border: 1px solid #eaeaea;
   display: inline-block;
-  text-transform: uppercase;
   text-align: center;
   color: #999;
   padding: 4px 12px;
@@ -2442,14 +2439,14 @@ Google map
 .comments .comment-title,
 .comment-form .comment-form-title {
   border-bottom: 1px dotted #c2c2c2;
-  font-size: 16px;
+  font-size: 13px;
   color: #111;
   padding-bottom: 15px;
   margin: 0 0 20px;
 }
 
 .comment-author {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .comment-avatar {

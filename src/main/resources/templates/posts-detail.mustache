@@ -22,26 +22,28 @@
             </div>
         </div>
         <div class="post-entry">
-            <p>{{post.content}}</p>
+            <p>{{{post.content}}}</p>
         </div>
     </div>
-    {{#comment}}
+
     <div class="comments">
-        <h4 class="comment-title font-alt">댓글 목록</h4>
+        <h6 class="comment-title font-alt">댓글 목록</h6>
+    {{#comment}}
         <div class="comment clearfix">
             <div class="commentpost-content clearfix">
-                <div class="comment-author font-alt"><a href="#">{{author}}</a></div>
+                <div class="comment-author font-alt"><a href="#"><h7>{{author}}</h7></a></div>
                 <div class="comment-body">
-                    {{memo}}
+                    <h7>{{memo}}</h7>
                 </div>
-                <div class="comment-meta font-alt">{{modifiedDate}}</a>
+                <div class="comment-meta font-alt"><h7>{{modifiedDate}}</h7></a>
                 </div>
             </div>
         </div>
-    </div>
     {{/comment}}
+    </div>
+
     <div class="comment-form">
-        <h4 class="comment-form-title font-alt">댓글</h4>
+        <h6 class="comment-form-title font-alt">댓글</h6>
         <form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
                 <input class="form-control" type="hidden" id="memoauthor" name="memoauthor" value ="{{#uName}}{{uName}}{{/uName}}"/>
                 <input type="hidden" id="id" value="{{post.id}}">
@@ -51,9 +53,11 @@
             <button class="btn btn-round btn-d" type="button" id="btnReplySave" >댓글달기</button>
         </form>
     </div>
-    <a href="/freeboard" role="button" class="btn btn-secondary">목록보기</a>
+    <br>
+    <hr>
+    <a href="/freeboard" role="button" class="btn btn-g btn-round">목록보기</a>
     {{#writeUser}}
-        <a href="/posts/update/{{post.id}}" role="button" class="btn btn-secondary">수정하기</a>
+        <a href="/posts/update/{{post.id}}" role="button" class="btn btn-primary">수정하기</a>
         <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
     {{/writeUser}}
 </div>

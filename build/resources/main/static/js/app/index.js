@@ -81,6 +81,8 @@ var main = {
 
         },
     save : function () {
+            var content = editor.getHtml();
+            document.getElementById("content").value = content;
             var data = {
                 title: $('#title').val(),
                 author: $('#author').val(),
@@ -102,6 +104,9 @@ var main = {
 
      // 신규로 추가될 업데이트 함수 기능
      update : function() {
+            var content = editor.getHtml();
+            document.getElementById("content").value = content;
+
             var data= {
                 title: $('#title').val(),
                 content: $('#content').val()
@@ -143,6 +148,9 @@ var main = {
      },
 
     news_save : function () {
+            var content = editor.getHtml();
+            document.getElementById("content").value = content;
+
             var data = {
                 title: $('#title').val(),
                 author: $('#author').val(),
@@ -156,7 +164,7 @@ var main = {
                         data: JSON.stringify(data)
                     }).done(function() {
                         alert('글이 등록되었습니다.');
-                        window.location.href = '/news';
+                        window.location.href = '/admin/news';
                     }).fail(function (error) {
                         alert(JSON.stringify(error));
                     });
@@ -164,6 +172,9 @@ var main = {
 
      // 신규로 추가될 업데이트 함수 기능
      newsupdate : function() {
+            var content = editor.getHtml();
+            document.getElementById("content").value = content;
+
             var data= {
                 title: $('#title').val(),
                 content: $('#content').val()
@@ -181,7 +192,7 @@ var main = {
                 data: JSON.stringify(data)
             }).done(function() {
                 alert('글이 수정되었습니다.');
-                window.location.href = '/news';
+                window.location.href = '/admin/news';
             }).fail(function (error) {
                 alert(JSON.stringfy(error));
             });
@@ -197,7 +208,7 @@ var main = {
             contentType: 'application/json; charset=utf-8'
         }).done(function() {
             alert('글이 삭제되었습니다. ');
-            window.location.href = '/news';
+            window.location.href = '/admin/news';
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -205,6 +216,9 @@ var main = {
      },
 
          noticesave : function () {
+
+            var content = editor.getHtml();
+            document.getElementById("content").value = content;
                  var data = {
                      title: $('#title').val(),
                      author: $('#author').val(),
@@ -218,7 +232,7 @@ var main = {
                              data: JSON.stringify(data)
                          }).done(function() {
                              alert('글이 등록되었습니다.');
-                             window.location.href = '/notice';
+                             window.location.href = '/admin/notice';
                          }).fail(function (error) {
                              alert(JSON.stringify(error));
                          });
@@ -226,6 +240,9 @@ var main = {
 
           // 신규로 추가될 업데이트 함수 기능
           noticeupdate : function() {
+            var content = editor.getHtml();
+            document.getElementById("content").value = content;
+
                  var data= {
                      title: $('#title').val(),
                      content: $('#content').val()
@@ -243,7 +260,7 @@ var main = {
                      data: JSON.stringify(data)
                  }).done(function() {
                      alert('글이 수정되었습니다.');
-                     window.location.href = '/notice';
+                     window.location.href = '/admin/notice';
                  }).fail(function (error) {
                      alert(JSON.stringfy(error));
                  });
@@ -259,7 +276,7 @@ var main = {
                  contentType: 'application/json; charset=utf-8'
              }).done(function() {
                  alert('글이 삭제되었습니다. ');
-                 window.location.href = '/notice';
+                 window.location.href = '/admin/notice';
              }).fail(function (error) {
                  alert(JSON.stringify(error));
              });
