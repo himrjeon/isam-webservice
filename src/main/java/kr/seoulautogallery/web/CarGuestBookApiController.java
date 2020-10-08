@@ -25,7 +25,7 @@ public class CarGuestBookApiController {
         return carGuestBookService.findById(id);
     }
 
-    @DeleteMapping("/api/v2/carguestbook/{id}")
+    @DeleteMapping("/api/v2/carguestbook/delete/{id}")
     public Long delete(@PathVariable Long id) {
         carGuestBookService.delete(id);
         return id;

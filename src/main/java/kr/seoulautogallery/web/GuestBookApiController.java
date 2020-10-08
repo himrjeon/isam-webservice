@@ -16,7 +16,7 @@ public class GuestBookApiController {
         return guestBookService.save(requestDto);
     }
 
-    @PutMapping("/api/v2/guestbook/{id}")
+    @PutMapping("/api/v2/guestbook/update/{id}")
     public Long update(@PathVariable Long id, @RequestBody GuestBookUpdateRequestDto requestDto) {
         return guestBookService.update(id, requestDto);
     }
@@ -26,7 +26,7 @@ public class GuestBookApiController {
         return guestBookService.findById(id);
     }
 
-    @DeleteMapping("/api/v2/guestbook/{id}")
+    @DeleteMapping("/api/v2/guestbook/delete/{id}")
     public Long delete(@PathVariable Long id) {
         guestBookService.delete(id);
         return id;

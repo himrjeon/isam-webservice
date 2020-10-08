@@ -1,5 +1,7 @@
 package kr.seoulautogallery.domain;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,5 +16,9 @@ public interface UsedCarsRepository extends JpaRepository<UsedCars, Long> {
 
     @Query(nativeQuery = true, value = "SELECT * FROM usedcar p ORDER BY p.id DESC LIMIT 6")
     List<UsedCars> findTop6Desc();
+
+    Page<UsedCars> findAll(Pageable pageable);
+
+    List<UsedCars> findByTitleContaining(String keyword);
 
 }

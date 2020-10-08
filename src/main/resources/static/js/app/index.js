@@ -61,6 +61,11 @@ var main = {
                     _this.carguestsave();
         });
 
+                $('#btn-carguest-delete').on('click', function () {
+                            _this.carguestdelete();
+                });
+
+
                 $('#popup-btn-save').on('click', function () {
                     _this.popupsave();
                 });
@@ -317,7 +322,7 @@ var main = {
                  // url은 어느 게시글을 수정할지에 대해 path에 id를 추가하여 구분.
                  $.ajax({
                      type: 'PUT',
-                     url: '/api/v2/guestbook/'+id,
+                     url: '/api/v2/guestbook/update/'+id,
                      dataType: 'json',
                      contentType: 'application/json; charset=utf-8',
                      data: JSON.stringify(data)
@@ -334,11 +339,11 @@ var main = {
 
              $.ajax({
                  type: 'DELETE',
-                 url: '/api/v2/guestbook/'+id,
+                 url: '/api/v2/guestbook/delete/'+id,
                  dataType: 'json',
                  contentType: 'application/json; charset=utf-8'
              }).done(function() {
-                 alert('글이 삭제되었습니다. ');
+                 alert('글이 삭제되었습니다.');
                  window.location.reload();
              }).fail(function (error) {
                  alert(JSON.stringify(error));
@@ -415,19 +420,19 @@ var main = {
                   },
 
                   carguestdelete : function () {
-                     var id = $('#id').val();
+                  var id = $('#id').val();
 
-                     $.ajax({
-                         type: 'DELETE',
-                         url: '/api/v2/carguestbook/'+id,
-                         dataType: 'json',
-                         contentType: 'application/json; charset=utf-8'
-                     }).done(function() {
-                         alert('글이 삭제되었습니다. ');
-                         window.location.reload();
-                     }).fail(function (error) {
-                         alert(JSON.stringify(error));
-                     });
+                  $.ajax({
+                      type: 'DELETE',
+                      url: '/api/v2/carguestbook/delete/'+id,
+                      dataType: 'json',
+                      contentType: 'application/json; charset=utf-8'
+                  }).done(function() {
+                      alert('글이 삭제되었습니다. ');
+                      window.location.href = '/admin/carcontact';
+                  }).fail(function (error) {
+                      alert(JSON.stringify(error));
+                  });
 
                   },
                            popupsave : function () {

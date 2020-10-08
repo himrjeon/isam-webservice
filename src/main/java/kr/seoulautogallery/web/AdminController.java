@@ -2,6 +2,7 @@ package kr.seoulautogallery.web;
 
 import kr.seoulautogallery.config.auth.LoginUser;
 import kr.seoulautogallery.config.auth.dto.SessionUser;
+import kr.seoulautogallery.domain.UsedCars;
 import kr.seoulautogallery.service.cars.S3Service;
 import kr.seoulautogallery.service.cars.ImportCarsS3UploadService;
 import kr.seoulautogallery.service.cars.UsedCarsS3UploadService;
@@ -9,10 +10,14 @@ import kr.seoulautogallery.service.popup.PopUpS3UploadService;
 import kr.seoulautogallery.service.posts.*;
 import kr.seoulautogallery.web.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -52,12 +57,16 @@ public class AdminController {
     }
 
     @GetMapping("/admin/usedcar")
-    public String usedcar(Model model, @LoginUser SessionUser user) {
+    public String usedcar(Model model, @LoginUser SessionUser user, @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
         List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getList();
         model.addAttribute("galleryList", usedCarsDtoList);
+        List<UsedCarsDto> boardList = usedCarsS3UploadService.findAll(pageNum);
+        String[] pageList = usedCarsS3UploadService.getPageList(pageNum);
+        model.addAttribute(boardList);
+        model.addAttribute("pageList", pageList);
 
         return "admin-usedcar";
     }
