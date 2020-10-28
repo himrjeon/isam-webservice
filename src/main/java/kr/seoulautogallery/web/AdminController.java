@@ -3,23 +3,22 @@ package kr.seoulautogallery.web;
 import kr.seoulautogallery.config.auth.LoginUser;
 import kr.seoulautogallery.config.auth.dto.SessionUser;
 import kr.seoulautogallery.domain.UsedCars;
-import kr.seoulautogallery.service.cars.S3Service;
-import kr.seoulautogallery.service.cars.ImportCarsS3UploadService;
-import kr.seoulautogallery.service.cars.UsedCarsS3UploadService;
+import kr.seoulautogallery.service.cars.*;
 import kr.seoulautogallery.service.popup.PopUpS3UploadService;
 import kr.seoulautogallery.service.posts.*;
 import kr.seoulautogallery.web.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -35,6 +34,8 @@ public class AdminController {
     private final S3Service s3Service;
     private final GuestBookService guestBookService;
     private final CarGuestBookService carGuestBookService;
+    private final DirectCarsS3UploadService directCarsS3UploadService;
+    private final ShowRoomS3UploadService showRoomS3UploadService;
 
     @GetMapping("/admin")
     public String admin(Model model, @LoginUser SessionUser user) {
@@ -50,7 +51,8 @@ public class AdminController {
             model.addAttribute("uName", user.getName());
         }
 
-        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
+       // List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
+        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop50Desc();
         model.addAttribute("galleryList", importCarsDtoList);
 
         return "admin-importcar";
@@ -176,6 +178,195 @@ public class AdminController {
 
         return "event_01";
     }
+
+    @GetMapping("/admin/directcar")
+    public String directCar(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        List<DirectCarsDto> directCarsDtoList = directCarsS3UploadService.getList();
+        model.addAttribute("galleryList", directCarsDtoList);
+
+        return "admin-directcar";
+    }
+
+    @GetMapping("/admin/directcar/save")
+    public String directCarSave(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+        return "admin-directcar-save";
+    }
+
+    @GetMapping("/admin/directcar/detail/{id}")
+    public String directCarsDetail(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        DirectCarsDto dto = directCarsS3UploadService.findById(id);
+        model.addAttribute("directcar",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        return "admin-directcar-detail";
+    }
+
+    @PostMapping("/directcar/upload")
+    @ResponseBody
+    public String directCarUpload(DirectCarsDto directCarsDto, MultipartFile file, MultipartFile file2, MultipartFile file3, MultipartFile file4, MultipartFile file5, MultipartFile file6, MultipartFile file7, MultipartFile file8, MultipartFile file9, MultipartFile file10, MultipartFile file11, MultipartFile file12, MultipartFile file13, MultipartFile file14, MultipartFile file15, MultipartFile file16, MultipartFile file17, MultipartFile file18, MultipartFile file19, MultipartFile file20) throws IOException {
+        String imgPath = s3Service.upload(directCarsDto.getFilePath(), file);
+        directCarsDto.setFilePath(imgPath);
+        String imgPath2 = s3Service.upload(directCarsDto.getFilePath2(), file2);
+        directCarsDto.setFilePath2(imgPath2);
+        String imgPath3 = s3Service.upload(directCarsDto.getFilePath3(), file3);
+        directCarsDto.setFilePath3(imgPath3);
+        String imgPath4 = s3Service.upload(directCarsDto.getFilePath4(), file4);
+        directCarsDto.setFilePath4(imgPath4);
+        String imgPath5 = s3Service.upload(directCarsDto.getFilePath5(), file5);
+        directCarsDto.setFilePath5(imgPath5);
+        String imgPath6 = s3Service.upload(directCarsDto.getFilePath6(), file6);
+        directCarsDto.setFilePath6(imgPath6);
+        String imgPath7 = s3Service.upload(directCarsDto.getFilePath7(), file7);
+        directCarsDto.setFilePath7(imgPath7);
+        String imgPath8 = s3Service.upload(directCarsDto.getFilePath8(), file8);
+        directCarsDto.setFilePath8(imgPath8);
+        String imgPath9 = s3Service.upload(directCarsDto.getFilePath9(), file9);
+        directCarsDto.setFilePath9(imgPath9);
+        String imgPath10 = s3Service.upload(directCarsDto.getFilePath10(), file10);
+        directCarsDto.setFilePath10(imgPath10);
+        String imgPath11 = s3Service.upload(directCarsDto.getFilePath11(), file11);
+        directCarsDto.setFilePath11(imgPath11);
+        String imgPath12 = s3Service.upload(directCarsDto.getFilePath12(), file12);
+        directCarsDto.setFilePath12(imgPath12);
+        String imgPath13 = s3Service.upload(directCarsDto.getFilePath13(), file13);
+        directCarsDto.setFilePath13(imgPath13);
+        String imgPath14 = s3Service.upload(directCarsDto.getFilePath14(), file14);
+        directCarsDto.setFilePath14(imgPath14);
+        String imgPath15 = s3Service.upload(directCarsDto.getFilePath15(), file15);
+        directCarsDto.setFilePath15(imgPath15);
+        String imgPath16 = s3Service.upload(directCarsDto.getFilePath16(), file16);
+        directCarsDto.setFilePath16(imgPath16);
+        String imgPath17 = s3Service.upload(directCarsDto.getFilePath17(), file17);
+        directCarsDto.setFilePath17(imgPath17);
+        String imgPath18 = s3Service.upload(directCarsDto.getFilePath18(), file18);
+        directCarsDto.setFilePath18(imgPath18);
+        String imgPath19 = s3Service.upload(directCarsDto.getFilePath19(), file19);
+        directCarsDto.setFilePath19(imgPath19);
+        String imgPath20 = s3Service.upload(directCarsDto.getFilePath20(), file20);
+        directCarsDto.setFilePath20(imgPath20);
+        String sText = StringEscapeUtils.unescapeHtml3(directCarsDto.getContent());
+        directCarsDto.setContent(sText);
+        directCarsS3UploadService.savePost(directCarsDto);
+
+        return "admin-directcar";
+    }
+
+    @GetMapping("/admin/directcar/update/{id}")
+    public String directCarsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        DirectCarsDto dto = directCarsS3UploadService.findById(id);
+        model.addAttribute("directcar",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        return "admin-directcar-update";
+    }
+
+    @GetMapping("/admin/showroom")
+    public String showroom(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
+        model.addAttribute("galleryList", showRoomDtoList);
+
+        return "admin-showroom";
+    }
+
+    @GetMapping("/admin/showroom/save")
+    public String showRoomSave(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+        return "admin-showroom-save";
+    }
+
+    @GetMapping("/showroom/detail/{id}")
+    public String showRoomDetail(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        ShowRoomDto dto = showRoomS3UploadService.findById(id);
+        model.addAttribute("showroom",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        return "admin-showroom-detail";
+    }
+
+    @PostMapping("/showroom/upload")
+    @ResponseBody
+    public String showRoomUpload(ShowRoomDto showRoomDto, MultipartFile file, MultipartFile file2, MultipartFile file3, MultipartFile file4, MultipartFile file5, MultipartFile file6, MultipartFile file7, MultipartFile file8, MultipartFile file9, MultipartFile file10, MultipartFile file11, MultipartFile file12, MultipartFile file13, MultipartFile file14, MultipartFile file15, MultipartFile file16, MultipartFile file17, MultipartFile file18, MultipartFile file19, MultipartFile file20) throws IOException {
+        String imgPath = s3Service.upload(showRoomDto.getFilePath(), file);
+        showRoomDto.setFilePath(imgPath);
+        String imgPath2 = s3Service.upload(showRoomDto.getFilePath2(), file2);
+        showRoomDto.setFilePath2(imgPath2);
+        String imgPath3 = s3Service.upload(showRoomDto.getFilePath3(), file3);
+        showRoomDto.setFilePath3(imgPath3);
+        String imgPath4 = s3Service.upload(showRoomDto.getFilePath4(), file4);
+        showRoomDto.setFilePath4(imgPath4);
+        String imgPath5 = s3Service.upload(showRoomDto.getFilePath5(), file5);
+        showRoomDto.setFilePath5(imgPath5);
+        String imgPath6 = s3Service.upload(showRoomDto.getFilePath6(), file6);
+        showRoomDto.setFilePath6(imgPath6);
+        String imgPath7 = s3Service.upload(showRoomDto.getFilePath7(), file7);
+        showRoomDto.setFilePath7(imgPath7);
+        String imgPath8 = s3Service.upload(showRoomDto.getFilePath8(), file8);
+        showRoomDto.setFilePath8(imgPath8);
+        String imgPath9 = s3Service.upload(showRoomDto.getFilePath9(), file9);
+        showRoomDto.setFilePath9(imgPath9);
+        String imgPath10 = s3Service.upload(showRoomDto.getFilePath10(), file10);
+        showRoomDto.setFilePath10(imgPath10);
+        String imgPath11 = s3Service.upload(showRoomDto.getFilePath11(), file11);
+        showRoomDto.setFilePath11(imgPath11);
+        String imgPath12 = s3Service.upload(showRoomDto.getFilePath12(), file12);
+        showRoomDto.setFilePath12(imgPath12);
+        String imgPath13 = s3Service.upload(showRoomDto.getFilePath13(), file13);
+        showRoomDto.setFilePath13(imgPath13);
+        String imgPath14 = s3Service.upload(showRoomDto.getFilePath14(), file14);
+        showRoomDto.setFilePath14(imgPath14);
+        String imgPath15 = s3Service.upload(showRoomDto.getFilePath15(), file15);
+        showRoomDto.setFilePath15(imgPath15);
+        String imgPath16 = s3Service.upload(showRoomDto.getFilePath16(), file16);
+        showRoomDto.setFilePath16(imgPath16);
+        String imgPath17 = s3Service.upload(showRoomDto.getFilePath17(), file17);
+        showRoomDto.setFilePath17(imgPath17);
+        String imgPath18 = s3Service.upload(showRoomDto.getFilePath18(), file18);
+        showRoomDto.setFilePath18(imgPath18);
+        String imgPath19 = s3Service.upload(showRoomDto.getFilePath19(), file19);
+        showRoomDto.setFilePath19(imgPath19);
+        String imgPath20 = s3Service.upload(showRoomDto.getFilePath20(), file20);
+        showRoomDto.setFilePath20(imgPath20);
+        String sText = StringEscapeUtils.unescapeHtml3(showRoomDto.getContent());
+        showRoomDto.setContent(sText);
+        showRoomS3UploadService.savePost(showRoomDto);
+
+        return "admin-showroom";
+    }
+
+    @GetMapping("/admin/showroom/update/{id}")
+    public String showRoomUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        ShowRoomDto dto = showRoomS3UploadService.findById(id);
+        model.addAttribute("showroom",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        return "admin-showroom-update";
+    }
+
 
 
 }

@@ -2,6 +2,7 @@ package kr.seoulautogallery.web;
 
 import kr.seoulautogallery.config.auth.LoginUser;
 import kr.seoulautogallery.config.auth.dto.SessionUser;
+import kr.seoulautogallery.domain.DealerUser;
 import kr.seoulautogallery.service.cars.ImportCarsS3UploadService;
 import kr.seoulautogallery.service.cars.UsedCarsS3UploadService;
 import kr.seoulautogallery.service.popup.PopUpS3UploadService;
@@ -56,6 +57,10 @@ public class IndexController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("uName", dealerUser.getName());
+        }
         List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop6Desc();
         model.addAttribute("galleryList", importCarsDtoList);
 

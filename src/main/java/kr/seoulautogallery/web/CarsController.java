@@ -34,7 +34,8 @@ public class CarsController {
             model.addAttribute("uName", user.getName());
         }
 
-        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
+        //List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
+        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop50Desc();
         model.addAttribute("galleryList", importCarsDtoList);
 
         return "importcar";

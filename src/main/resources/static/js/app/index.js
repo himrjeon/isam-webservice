@@ -84,6 +84,26 @@ var main = {
             _this.usedcardelete();
         });
 
+        $('#btn-deal-save').on('click', function () {
+            _this.dealsave();
+        });
+
+        $('#dealer-btn-update').on('click', function () {
+            _this.dealupdate();
+        });
+
+        $('#btn-dealer-delete').on('click', function() {
+            _this.dealdelete();
+        });
+
+        $('#signin').on('click', function() {
+            _this.signin();
+        });
+        $('#directcar-btn-delete').on('click', function () {
+            _this.directcardelete();
+        });
+
+
         },
     save : function () {
             var content = editor.getHtml();
@@ -514,7 +534,97 @@ var main = {
                      }).fail(function (error) {
                          alert(JSON.stringify(error));
                      });
-                       }
+                       },
+
+                       directcardelete : function() {
+                                  var id = $('#id').val();
+                         $.ajax({
+                         type: 'DELETE',
+                         url: '/api/v2/directcar/delete/'+id,
+                         dataType: 'json',
+                         contentType: 'application/json; charset=utf-8'
+                     }).done(function() {
+                         alert('차량이 삭제되었습니다. ');
+                         window.location.reload();
+                     }).fail(function (error) {
+                         alert(JSON.stringify(error));
+                     });
+                       },
+
+
+  dealupdate : function() {
+                                  var form = $('#dealform')[0];
+                                  var formData = new FormData(form);
+                                  var id = $('#id').val();
+                              $.ajax({
+                                  type: 'POST',
+                                  url: '/api/v2/dealer/update/'+id,
+                                  processData: false,
+                                  contentType: false,
+                                  data: formData
+                              }).done(function() {
+                                  alert('회원 정보가 수정되었습니다.');
+                                  window.location.href = '/admin/dealer';
+                              }).fail(function (error) {
+                                  alert(JSON.stringfy(error));
+                              });
+                       },
+
+ dealdelete : function() {
+                                   var id = $('#id').val();
+                          $.ajax({
+                          type: 'DELETE',
+                          url: '/api/v2/dealer/delete/'+id,
+                          dataType: 'json',
+                          contentType: 'application/json; charset=utf-8'
+                      }).done(function() {
+                          alert('차량이 삭제되었습니다. ');
+                          window.location.reload();
+                      }).fail(function (error) {
+                          alert(JSON.stringify(error));
+                      });
+                        },
+
+
+    signin : function () {
+            var data = {
+                userid: $('#userid').val(),
+                password: $('#password').val(),
+            };
+            $.ajax({
+                        type: 'POST',
+                        url: '/api/v2/dealer/login',
+                        dataType: 'json',
+                        contentType:'application/json; charset=utf-8',
+                        data: JSON.stringify(data)
+                    }).done(function() {
+                        alert('로그인을 시도합니다.');
+                        window.location.href = '/';
+                    }).fail(function (error) {
+                        alert('로그인이 실패하였습니다. 아이디와 비밀번호를 확인해주세요.');
+                    });
+            },
+
+ dealsave : function () {
+          var form = $('#dealform')[0];
+                var formData = new FormData(form);
+                formData.append("file", $("#file")[0].files[0]);
+            $.ajax({
+                        type: 'POST',
+                        url: '/api/v2/dealer',
+                        processData: false,
+                        contentType: false,
+                        data: formData
+                    }).done(function() {
+                        alert('가입신청이 완료됐습니다.');
+                        window.location.href = '/';
+                    }).fail(function (error) {
+                        alert(JSON.stringify(error));
+                    });
+                    }
+
+
+
 
     };
     main.init();

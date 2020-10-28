@@ -1,0 +1,76 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 mb-sm-40"><div class="gallery-item"><a class="gallerys" href="{{directcar.imgFullPath}}"><img src="{{directcar.imgFullPath}}" id="mainimg" alt="Single Product Image"/></a>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{directcar.imgFullPath}}"></a><img src="{{directcar.imgFullPath2}}"  alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath2}}"></a><img src="{{directcar.imgFullPath2}}" alt="Single Product"/></li>
+                        <li><img src="{{directcar.imgFullPath3}}" id="img1" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath4}}"></a><img src="{{directcar.imgFullPath4}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath5}}"></a><img src="{{directcar.imgFullPath5}}" alt="Single Product"/></li>
+                    </ul>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{directcar.imgFullPath6}}"></a><img src="{{directcar.imgFullPath6}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath7}}"></a><img src="{{directcar.imgFullPath7}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath8}}"></a><img src="{{directcar.imgFullPath8}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath9}}"></a><img src="{{directcar.imgFullPath9}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath10}}"></a><img src="{{directcar.imgFullPath10}}" alt="Single Product"/></li>
+                    </ul>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{directcar.imgFullPath11}}"></a><img src="{{directcar.imgFullPath11}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath12}}"></a><img src="{{directcar.imgFullPath12}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath13}}"></a><img src="{{directcar.imgFullPath13}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath14}}"></a><img src="{{directcar.imgFullPath14}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath15}}"></a><img src="{{directcar.imgFullPath15}}" alt="Single Product"/></li>
+                    </ul>
+                    <ul class="product-gallery">
+                        <li><a class="gallery" href="{{directcar.imgFullPath16}}"></a><img src="{{directcar.imgFullPath16}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath17}}"></a><img src="{{directcar.imgFullPath17}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath18}}"></a><img src="{{directcar.imgFullPath18}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath19}}"></a><img src="{{directcar.imgFullPath19}}" alt="Single Product"/></li>
+                        <li><a class="gallery" href="{{directcar.imgFullPath20}}"></a><img src="{{directcar.imgFullPath20}}" alt="Single Product"/></li>
+                    </ul>
+                </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="product-title font-alt">{{directcar.title}}</h1>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-12"><a class="open-tab section-scroll" href="#reviews">판매여부 : {{directcar.carsalecheck}} </a>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-12">
+                            <div class="description">
+                                <p>{{{directcar.subcontent}}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-20">
+                        <div class="col-sm-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-70">
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs font-alt" role="tablist">
+                        <li class="active"><a href="#description" data-toggle="tab"><span class="icon-tools-2"></span>차량설명</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="description">
+                            {{{directcar.content}}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footermain}}

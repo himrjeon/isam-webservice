@@ -70,6 +70,18 @@ public class ImportCarsS3UploadService {
         return galleryDtoList;
     }
 
+    @Transactional(readOnly = true)
+    public List<ImportCarsDto> findTop50Desc() {
+        List<ImportCars> galleryEntityList = importCarsRepository.findTop50Desc();
+        List<ImportCarsDto> galleryDtoList = new ArrayList<>();
+
+        for (ImportCars galleryEntity : galleryEntityList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+        return galleryDtoList;
+    }
+
 
     private ImportCarsDto convertEntityToDto(ImportCars galleryEntity) {
         return ImportCarsDto.builder()

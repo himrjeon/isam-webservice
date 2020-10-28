@@ -1,0 +1,57 @@
+{{>layout/headermain}}
+
+<div class="main">
+    <section class="module bg-dark-30 about-page-header" data-background="/image/inst_pn_test2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h1 class="module-title font-alt mb-0">딜러 회원가입</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="module">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h4 class="font-alt mb-0">회원가입</h4>
+                    <hr class="divider-w mt-10 mb-20">
+                    <form class="form" id="dealform" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input class="form-control" id="userid" name="userid" type="text" placeholder="아이디"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="password" name="password" type="password" placeholder="비밀번호"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="name" name="name" type="text" placeholder="이름"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="shopname" name="shopname" type="text" placeholder="상사명"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="shopadd" name="shopadd" type="text" placeholder="상사주소"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="shopnum" name="shopnum" placeholder="상사 전화번호"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="phonenum" name="phonenum" placeholder="휴대번호"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" id="email" name="email" placeholder="이메일"/>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="file" name="file" type="file"/>
+                        </div>
+                        <input type="hidden" id="regicheck" name="regicheck" value="0">
+                    </form>
+                    <a href="/snslogin" role="button" class="btn btn-g btn-round">취소</a>
+                    <button type="button" class="btn btn-primary" id="btn-deal-save">가입신청</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{{>layout/footermain}}

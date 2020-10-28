@@ -91,7 +91,7 @@ console.log('%c BackEnd Proudly Crafted with CSLab.', 'background: #222; color: 
                 if (homeSection.hasClass('home-full-height')) {
                     homeSection.height($(window).height());
                 } else {
-                    homeSection.height($(window).height() * 0.85);
+                    homeSection.height($(window).height() * 0.45);
                 }
             }
         }

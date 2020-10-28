@@ -1,0 +1,92 @@
+{{>layout/headeradmin}}
+
+<div class="main">
+    <section class="module-small">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">관리자 화면</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin">관리자 페이지</a></li>
+                            <li><a href="/">ISAM 홈페이지</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">상품 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/importcar/save">수입차 등록</a></li>
+                            <li><a href="/admin/importcar">수입차 리스트</a></li>
+                            <li><a href="/usedcar/save">국산차 등록</a></li>
+                            <li><a href="/admin/usedcar">국산차 리스트</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">게시판 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/notice">공지사항 목록</a></li>
+                            <li><a href="/admin/news">뉴스 목록</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">문의사항 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/contactus">일반 문의사항</a></li>
+                            <li><a href="/admin/carcontact">차량 문의사항</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">홈페이지 관리</h5>
+                        <ul class="icon-list">
+                            <li><a href="/admin/popup">팝업 관리</a></li>
+                            <li><a href="/admin/dealer">딜러 관리</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                    <div class="carpost">
+                        <div class="post-header font-alt">
+                            <h1 class="post-title">딜러 관리</h1>
+                        </div>
+                    </div>
+                    <div class="post-entr">
+                        <div style="text-align: right;">
+                            <a href="/signup" role="button" class="btn btn-border-d btn-round">딜러등록</a>
+                        </div>
+                        <table class="table table-striped table-border checkout-table">
+                            <tbody>
+                            <tr>
+                                <th>번호</th>
+                                <th class="hidden-xs">이름</th>
+                                <th>아이디</th>
+                                <th>상사명</th>
+                                <th>휴대전화</th>
+                                <th>이메일</th>
+                                <th>승인여부</th>
+                                <th></th>
+                            </tr>
+                            {{#dealer}}
+                                <tr>
+                                    <th>{{id}}</th>
+                                    <td>{{name}}</td>
+                                    <td>{{userid}}</td>
+                                    <td>{{shopname}}</td>
+                                    <td>{{phonenum}}</td>
+                                    <td>{{email}}</td>
+                                    <td>{{regicheck}}</td>
+                                    <td>
+                                        <input type="hidden" id="id" value="{{id}}"/>
+                                        <a href="/admin/dealer/detail/{{id}}" role="button" class="btn btn-primary">수정</a>
+                                        <button type="button" class="btn btn-danger" id="btn-dealer-delete">삭제</button>
+                                    </td>
+                                </tr>
+                            {{/dealer}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{{>layout/footeradmin}}

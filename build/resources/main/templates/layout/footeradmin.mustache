@@ -130,6 +130,15 @@ JavaScripts
         $('#usedcar-btn-update').on('click', function () {
             _this.usedcarupdate();
         });
+
+        $('#directcar-btn-save').on('click', function () {
+            _this.directcarsave();
+        });
+
+        $('#directcar-btn-update').on('click', function () {
+            _this.directcarupdate();
+        });
+
         },
         save : function () {
             var data = editor.getHtml();
@@ -140,6 +149,166 @@ JavaScripts
             var data = editor2.getHtml();
             document.getElementById("test2").value = data;
             },
+
+directcarsave : function () {
+         var mcontent = editor.getHtml();
+         document.getElementById("test").value = mcontent;
+         var scontent = editor2.getHtml();
+         document.getElementById("test2").value = scontent;
+          var form = $('#insertForm')[0];
+                var formData = new FormData(form);
+                formData.append("file", $("#file")[0].files[0]);
+                formData.append("file2", $("#file2")[0].files[0]);
+                formData.append("file3", $("#file3")[0].files[0]);
+                formData.append("file4", $("#file4")[0].files[0]);
+                formData.append("file5", $("#file5")[0].files[0]);
+                formData.append("file6", $("#file6")[0].files[0]);
+                formData.append("file7", $("#file7")[0].files[0]);
+                formData.append("file8", $("#file8")[0].files[0]);
+                formData.append("file9", $("#file9")[0].files[0]);
+                formData.append("file10", $("#file10")[0].files[0]);
+                formData.append("file11", $("#file11")[0].files[0]);
+                formData.append("file12", $("#file12")[0].files[0]);
+                formData.append("file13", $("#file13")[0].files[0]);
+                formData.append("file14", $("#file14")[0].files[0]);
+                formData.append("file15", $("#file15")[0].files[0]);
+                formData.append("file16", $("#file16")[0].files[0]);
+                formData.append("file17", $("#file17")[0].files[0]);
+                formData.append("file18", $("#file18")[0].files[0]);
+                formData.append("file19", $("#file19")[0].files[0]);
+                formData.append("file20", $("#file20")[0].files[0]);
+            $.ajax({
+                        type: 'POST',
+                        url: '/api/v2/directcar',
+                        processData: false,
+                        contentType: false,
+                        data: formData
+                    }).done(function() {
+                        alert('차량이 등록되었습니다.');
+                        window.location.href = '/admin/directcar';
+                    }).fail(function (error) {
+                        alert(JSON.stringify(error));
+                    });
+                    },
+
+directcarupdate : function() {
+                                  var form = $('#insertForm')[0];
+                                  var formData = new FormData(form);
+                                  var fileCheck = document.getElementById("file").value;
+                                  console.log(fileCheck);
+                                  var fileCheck2 = document.getElementById("file2").value;
+                                  var fileCheck3 = document.getElementById("file3").value;
+                                  var fileCheck4 = document.getElementById("file4").value;
+                                  var fileCheck5 = document.getElementById("file5").value;
+                                  var fileCheck6 = document.getElementById("file6").value;
+                                  var fileCheck7 = document.getElementById("file7").value;
+                                  var fileCheck8 = document.getElementById("file8").value;
+                                  var fileCheck9 = document.getElementById("file9").value;
+                                  var fileCheck10 = document.getElementById("file10").value;
+                                  var fileCheck11 = document.getElementById("file11").value;
+                                  var fileCheck12 = document.getElementById("file12").value;
+                                  var fileCheck13 = document.getElementById("file13").value;
+                                  var fileCheck14 = document.getElementById("file14").value;
+                                  var fileCheck15 = document.getElementById("file15").value;
+                                  var fileCheck16 = document.getElementById("file16").value;
+                                  var fileCheck17 = document.getElementById("file17").value;
+                                  var fileCheck18 = document.getElementById("file18").value;
+                                  var fileCheck19 = document.getElementById("file19").value;
+                                  var fileCheck20 = document.getElementById("file20").value;
+                                  if(!fileCheck) {
+                                  } else {
+                                  formData.append("file", $("#file")[0].files[0]);
+                                  }
+                                  if(!fileCheck2) {
+                                  } else {
+                                  formData.append("file", $("#file2")[0].files[0]);
+                                  }
+                                  if(!fileCheck3) {
+                                  } else {
+                                  formData.append("file", $("#file3")[0].files[0]);
+                                  }
+                                  if(!fileCheck4) {
+                                  } else {
+                                  formData.append("file", $("#file4")[0].files[0]);
+                                  }
+                                  if(!fileCheck5) {
+                                  } else {
+                                  formData.append("file", $("#file5")[0].files[0]);
+                                  }
+                                  if(!fileCheck6) {
+                                  } else {
+                                  formData.append("file", $("#file6")[0].files[0]);
+                                  }
+                                  if(!fileCheck7) {
+                                  } else {
+                                  formData.append("file", $("#file7")[0].files[0]);
+                                  }
+                                  if(!fileCheck8) {
+                                  } else {
+                                  formData.append("file", $("#file8")[0].files[0]);
+                                  }
+                                  if(!fileCheck9) {
+                                  } else {
+                                  formData.append("file", $("#file9")[0].files[0]);
+                                  }
+                                  if(!fileCheck10) {
+                                  } else {
+                                  formData.append("file", $("#file10")[0].files[0]);
+                                  }
+                                  if(!fileCheck11) {
+                                  } else {
+                                  formData.append("file", $("#file11")[0].files[0]);
+                                  }
+                                  if(!fileCheck12) {
+                                  } else {
+                                  formData.append("file", $("#file12")[0].files[0]);
+                                  }
+                                  if(!fileCheck13) {
+                                  } else {
+                                  formData.append("file", $("#file13")[0].files[0]);
+                                  }
+                                  if(!fileCheck14) {
+                                  } else {
+                                  formData.append("file", $("#file14")[0].files[0]);
+                                  }
+                                  if(!fileCheck15) {
+                                  } else {
+                                  formData.append("file", $("#file15")[0].files[0]);
+                                  }
+                                  if(!fileCheck16) {
+                                  } else {
+                                  formData.append("file", $("#file16")[0].files[0]);
+                                  }
+                                  if(!fileCheck17) {
+                                  } else {
+                                  formData.append("file", $("#file17")[0].files[0]);
+                                  }
+                                  if(!fileCheck18) {
+                                  } else {
+                                  formData.append("file", $("#file18")[0].files[0]);
+                                  }
+                                  if(!fileCheck19) {
+                                  } else {
+                                  formData.append("file", $("#file19")[0].files[0]);
+                                  }
+                                  if(!fileCheck20) {
+                                  } else {
+                                  formData.append("file", $("#file20")[0].files[0]);
+                                  }
+                                  var id = $('#id').val();
+                              $.ajax({
+                                  type: 'POST',
+                                  url: '/api/v2/directcar/update/'+id,
+                                  processData: false,
+                                  contentType: false,
+                                  data: formData
+                              }).done(function() {
+                                  alert('차량이 수정되었습니다.');
+                                  window.location.href = '/admin/directcar';
+                              }).fail(function (error) {
+                                  alert(JSON.stringfy(error));
+                              });
+                       },
 
 
          importcarsave : function () {

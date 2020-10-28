@@ -15,4 +15,7 @@ public interface ImportCarsRepository extends JpaRepository<ImportCars, Long> {
         @Query(nativeQuery = true, value = "SELECT * FROM importcar p ORDER BY p.id DESC LIMIT 6")
         List<ImportCars> findTop6Desc();
 
+        @Query(nativeQuery = true, value = "SELECT * FROM importcar p ORDER BY p.id DESC LIMIT 50")
+        List<ImportCars> findTop50Desc();
+
         }

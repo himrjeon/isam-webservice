@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <h1 class="module-title font-alt">직수입 차량 목록</h1>
+                    <h1 class="module-title font-alt">수입 차량 목록</h1>
                 </div>
             </div>
             <hr class="divider-w pt-20">
@@ -20,14 +20,13 @@
                             <th class="hidden-xs">연식</th>
                             <th>주행거리</th>
                             <th>색상</th>
-                            <th>등록일</th>
                         </tr>
                         {{#galleryList}}
                         <tr>
                             <td rowspan="3" class="hidden-xs"><a href="/importcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
                             <td rowspan="3">
                                 <a href="/importcar/detail/{{id}}">
-                                <h5 class="product-title font-alt">{{title}}</h5>
+                                <b><h5 class="product-title font-alt">{{title}}</h5></b>
                                 <h7>{{{subcontent}}}</h7>
                                 <h5 class="product-title font-alt">{{carsalecheck}}</h5>
                                 </a>
@@ -41,17 +40,14 @@
                             <td>
                                 <h5 class="product-title font-alt">{{carcolor}}</h5>
                             </td>
-                            <td>
-                                <h5 class="product-title font-alt">{{createdDate}}</h5>
-                            </td>
                         </tr>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="3">
                                 <b>가격</b>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="3">
                                     <h5 class="product-title font-alt">{{carprice}}</h5>
                                 </td>
                             </tr>
