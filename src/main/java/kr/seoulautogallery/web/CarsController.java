@@ -2,10 +2,13 @@ package kr.seoulautogallery.web;
 
 import kr.seoulautogallery.config.auth.LoginUser;
 import kr.seoulautogallery.config.auth.dto.SessionUser;
+import kr.seoulautogallery.domain.DealerUser;
 import kr.seoulautogallery.service.cars.S3Service;
 import kr.seoulautogallery.service.cars.ImportCarsS3UploadService;
+import kr.seoulautogallery.service.cars.ShowRoomS3UploadService;
 import kr.seoulautogallery.service.cars.UsedCarsS3UploadService;
 import kr.seoulautogallery.web.dto.ImportCarsDto;
+import kr.seoulautogallery.web.dto.ShowRoomDto;
 import kr.seoulautogallery.web.dto.UsedCarsDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.text.StringEscapeUtils;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,14 +28,21 @@ import java.util.List;
 @Controller
 public class CarsController {
 
+    private final HttpSession httpSession;
     private final S3Service s3Service;
     private final ImportCarsS3UploadService importCarsS3UploadService;
     private final UsedCarsS3UploadService usedCarsS3UploadService;
+    private final ShowRoomS3UploadService showRoomS3UploadService;
 
     @GetMapping("/importcar")
     public String importcar(Model model, @LoginUser SessionUser user) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         //List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
@@ -46,6 +57,12 @@ public class CarsController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "importcar-save";
     }
 
@@ -56,6 +73,11 @@ public class CarsController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "importcar-detail";
@@ -69,6 +91,12 @@ public class CarsController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
 
         return "importcar-update";
     }
@@ -129,6 +157,11 @@ public class CarsController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getList();
         model.addAttribute("galleryList", usedCarsDtoList);
 
@@ -140,6 +173,12 @@ public class CarsController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "usedcar-save";
     }
 
@@ -150,6 +189,11 @@ public class CarsController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "usedcar-detail";
@@ -214,7 +258,31 @@ public class CarsController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "usedcar-update";
+    }
+
+    @GetMapping("/showroom")
+    public String showroom(Model model, @LoginUser SessionUser user) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+
+        //List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
+        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
+        model.addAttribute("galleryList", showRoomDtoList);
+
+        return "showroom";
     }
 
 

@@ -103,6 +103,9 @@ var main = {
             _this.directcardelete();
         });
 
+        $('#showroom-btn-delete').on('click', function () {
+            _this.showroomdelete();
+        });
 
         },
     save : function () {
@@ -551,6 +554,20 @@ var main = {
                      });
                        },
 
+                       showroomdelete : function() {
+                                  var id = $('#id').val();
+                         $.ajax({
+                         type: 'DELETE',
+                         url: '/api/v2/showroom/delete/'+id,
+                         dataType: 'json',
+                         contentType: 'application/json; charset=utf-8'
+                     }).done(function() {
+                         alert('차량이 삭제되었습니다. ');
+                         window.location.reload();
+                     }).fail(function (error) {
+                         alert(JSON.stringify(error));
+                     });
+                       },
 
   dealupdate : function() {
                                   var form = $('#dealform')[0];

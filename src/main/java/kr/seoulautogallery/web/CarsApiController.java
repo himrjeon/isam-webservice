@@ -384,6 +384,15 @@ public class CarsApiController {
         return "/admin/showroom";
     }
 
+    @PostMapping("/api/v2/showroom/copy")
+    @ResponseBody
+    public String showroomcopy(ShowRoomDto showRoomDto) throws IOException {
+        showRoomS3UploadService.savePost(showRoomDto);
+
+        return "/admin/showroom";
+    }
+
+
     @PostMapping("/api/v2/showroom/update/{id}")
     public Long showroomupdate(@PathVariable Long id,  MultipartFile file, MultipartFile file2, MultipartFile file3, MultipartFile file4, MultipartFile file5, MultipartFile file6, MultipartFile file7, MultipartFile file8, MultipartFile file9, MultipartFile file10, MultipartFile file11, MultipartFile file12, MultipartFile file13, MultipartFile file14, MultipartFile file15, MultipartFile file16, MultipartFile file17, MultipartFile file18, MultipartFile file19, MultipartFile file20, @ModelAttribute ShowRoomDto showRoomDto) throws IOException {
         String imgPath = s3Service.upload(showRoomDto.getFilePath(), file);

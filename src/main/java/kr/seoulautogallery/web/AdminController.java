@@ -2,6 +2,7 @@ package kr.seoulautogallery.web;
 
 import kr.seoulautogallery.config.auth.LoginUser;
 import kr.seoulautogallery.config.auth.dto.SessionUser;
+import kr.seoulautogallery.domain.DealerUser;
 import kr.seoulautogallery.domain.UsedCars;
 import kr.seoulautogallery.service.cars.*;
 import kr.seoulautogallery.service.popup.PopUpS3UploadService;
@@ -42,6 +43,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin";
     }
 
@@ -49,6 +56,11 @@ public class AdminController {
     public String importcar(Model model, @LoginUser SessionUser user) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
        // List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
@@ -63,6 +75,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getList();
         model.addAttribute("galleryList", usedCarsDtoList);
         List<UsedCarsDto> boardList = usedCarsS3UploadService.findAll(pageNum);
@@ -81,6 +99,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-notice";
     }
 
@@ -91,6 +115,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-news";
     }
 
@@ -101,6 +131,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-contactus";
     }
 
@@ -114,6 +150,11 @@ public class AdminController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-contactus-detail";
     }
 
@@ -124,6 +165,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-carcontact";
     }
 
@@ -137,6 +184,12 @@ public class AdminController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+
         return "admin-carcontact-detail";
     }
 
@@ -145,6 +198,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         List<PopupDto> popupDtoList = popUpS3UploadService.getList();
         model.addAttribute("galleryList", popupDtoList);
 
@@ -156,6 +215,11 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-popup-save";
     }
 
@@ -166,6 +230,11 @@ public class AdminController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "admin-popup-update";
@@ -185,6 +254,11 @@ public class AdminController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         List<DirectCarsDto> directCarsDtoList = directCarsS3UploadService.getList();
         model.addAttribute("galleryList", directCarsDtoList);
 
@@ -196,6 +270,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-directcar-save";
     }
 
@@ -206,6 +286,11 @@ public class AdminController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "admin-directcar-detail";
@@ -270,13 +355,40 @@ public class AdminController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-directcar-update";
+    }
+
+    @GetMapping("/admin/directcar/copy/{id}")
+    public String directCarsCopy(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        DirectCarsDto dto = directCarsS3UploadService.findById(id);
+        model.addAttribute("directcar",dto);
+
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        return "admin-directcar-copy";
     }
 
     @GetMapping("/admin/showroom")
     public String showroom(Model model, @LoginUser SessionUser user) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
@@ -290,6 +402,12 @@ public class AdminController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "admin-showroom-save";
     }
 
@@ -300,6 +418,11 @@ public class AdminController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "admin-showroom-detail";
@@ -362,6 +485,11 @@ public class AdminController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "admin-showroom-update";

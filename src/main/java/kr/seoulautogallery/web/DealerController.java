@@ -23,9 +23,7 @@ public class DealerController {
 
     @GetMapping("/signup")
     public String about(Model model, @LoginUser SessionUser user) {
-        if(user != null) {
-            model.addAttribute("uName", user.getName());
-        }
+
         return "dealeruserregi";
     }
 

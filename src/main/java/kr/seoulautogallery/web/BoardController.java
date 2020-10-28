@@ -2,6 +2,7 @@ package kr.seoulautogallery.web;
 
 import kr.seoulautogallery.config.auth.LoginUser;
 import kr.seoulautogallery.config.auth.dto.SessionUser;
+import kr.seoulautogallery.domain.DealerUser;
 import kr.seoulautogallery.domain.Posts;
 import kr.seoulautogallery.domain.PostsRepository;
 import kr.seoulautogallery.service.posts.NewsService;
@@ -17,9 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class BoardController {
+    private final HttpSession httpSession;
     private final PostsService postsService;
     private final NewsService newsServices;
     private final NoticeService noticeService;
@@ -31,6 +35,12 @@ public class BoardController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "posts-save";
     }
 
@@ -46,6 +56,11 @@ public class BoardController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "posts-update";
@@ -70,6 +85,15 @@ public class BoardController {
             }
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+            if(writeUser.equals(user.getName())) {
+                model.addAttribute("writeUser", writeUser);
+            }
+        }
+
+
         return "posts-detail";
     }
 
@@ -89,6 +113,12 @@ public class BoardController {
         }
         // 세션에 저장된 값이 있을 때만 model에 userName으로 등록함. 세션에 저장된 값이 없으면 model엔 아무런 값이 없는 상태이니
         // 로그인 버튼이 보이게 된다.
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "freeboard";
     }
 
@@ -107,6 +137,12 @@ public class BoardController {
         }
         // 세션에 저장된 값이 있을 때만 model에 userName으로 등록함. 세션에 저장된 값이 없으면 model엔 아무런 값이 없는 상태이니
         // 로그인 버튼이 보이게 된다.
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "news";
     }
 
@@ -115,6 +151,12 @@ public class BoardController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
             return "news-save";
     }
 
@@ -128,6 +170,11 @@ public class BoardController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "news-update";
     }
 
@@ -139,6 +186,11 @@ public class BoardController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "news-detail";
@@ -159,6 +211,13 @@ public class BoardController {
         }
         // 세션에 저장된 값이 있을 때만 model에 userName으로 등록함. 세션에 저장된 값이 없으면 model엔 아무런 값이 없는 상태이니
         // 로그인 버튼이 보이게 된다.
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+
         return "notice";
     }
 
@@ -167,6 +226,12 @@ public class BoardController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "notice-save";
     }
 
@@ -178,6 +243,11 @@ public class BoardController {
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "notice-update";
@@ -193,6 +263,11 @@ public class BoardController {
             model.addAttribute("uName", user.getName());
         }
 
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
 
         return "notice-detail";
     }
@@ -201,6 +276,11 @@ public class BoardController {
     public String contactus(Model model, @LoginUser SessionUser user) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
         }
 
         return "contactus";

@@ -1,15 +1,10 @@
 package kr.seoulautogallery.web;
 
-import kr.seoulautogallery.domain.DealerUser;
 import kr.seoulautogallery.domain.DealerUserRepository;
 import kr.seoulautogallery.service.DealerUserLoginService;
-import kr.seoulautogallery.service.cars.ImportCarsS3UploadService;
 import kr.seoulautogallery.service.cars.S3Service;
 import kr.seoulautogallery.web.dto.DealerUserDto;
-import kr.seoulautogallery.web.dto.ImportCarsDto;
-import kr.seoulautogallery.web.dto.UsedCarsDto;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

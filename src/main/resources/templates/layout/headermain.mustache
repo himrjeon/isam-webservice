@@ -87,6 +87,10 @@
                             </li>
                             <li><a href="/usedcar">국산차</a>
                             </li>
+                            {{#dName}}
+                            <li><a href="/showroom">SHOW ROOM</a>
+                            </li>
+                            {{/dName}}
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" href="/financial" data-toggle="dropdown">FINANCIAL</a>
@@ -125,13 +129,30 @@
                                 <!-- 시큐리티에서 기본으로 제공하는 로그아웃 url, 컨트롤러 만들 필요 없음. -->
                             </li>
                                 {{/uName}}
+                                {{^dName}}
                                 {{^uName}} <!--머스테치에서 해당 값이 존재하는 않는 경우는 ^를 사용. 없으면 로그인 버튼 노출 -->
                                     <li>
                                         <a href="/snslogin">로그인</a>
                                     </li>
                                 {{/uName}}
+                                {{/dName}}
+                            {{#dName}} <!-- 머스테치는 if문을 제공하지 않고 트루펄스여부만 판단. 유저네임이 있으면 노출 -->
+                                <li>
+                                    <a href="#">딜러이름 : {{dName}}</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">로그아웃</a>
+                                    <!-- 시큐리티에서 기본으로 제공하는 로그아웃 url, 컨트롤러 만들 필요 없음. -->
+                                </li>
+                            {{/dName}}
+                            {{^uName}}
+                                {{^dName}}
+                                    <li>
+                                        <a href="/snslogin">로그인</a>
+                                    </li>
+                                {{/dName}}
+                            {{/uName}}
                             </li>
-
                         </ul>
                     </li>
                 </ul>

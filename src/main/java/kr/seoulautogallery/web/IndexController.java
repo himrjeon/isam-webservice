@@ -59,8 +59,9 @@ public class IndexController {
 
         DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
         if(dealerUser != null) {
-            model.addAttribute("uName", dealerUser.getName());
+            model.addAttribute("dName", dealerUser.getName());
         }
+
         List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop6Desc();
         model.addAttribute("galleryList", importCarsDtoList);
 
@@ -76,6 +77,12 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "about";
     }
 
@@ -84,6 +91,12 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "snslogin";
     }
 
@@ -92,6 +105,12 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "carprocess";
     }
 
@@ -100,6 +119,12 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "cometous";
     }
 
@@ -108,6 +133,12 @@ public class IndexController {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
         return "financial";
     }
 
