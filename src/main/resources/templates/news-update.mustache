@@ -30,12 +30,10 @@
                                 <label for="author"> 작성자 </label>
                                 <input type="text" class="form-control" id="author" value="{{news.author}}" readonly> <!-- Input태그에 읽기만 허용하는 속성. -->
                             </div>
-                            <div class="form-group" style="display:none;">
-                                <textarea class="form-control" id="content">{{{news.content}}}</textarea>
-                            </div>
                         </form>
                             <label for="content"> 내용 </label>
-                            <div id="editor"></div>
+                            <textarea class="form-control" id="summernote"
+                                  name="content" placeholder="content" rows="7">{{{news.content}}}</textarea>
                         <hr>
                         <a href="/news" role="button" class="bbtn btn-g btn-round">취소</a>
                         <button type="button" class="btn btn-primary" id="btn-news-update">수정 완료</button>

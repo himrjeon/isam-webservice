@@ -45,29 +45,77 @@ JavaScripts
 <script src="/js/plugins.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/app/index.js"></script>
+<script src = "/summernote/summernote-lite.js"></script>
+<script src = "/summernote/lang/summernote-ko-KR.js"></script>
 <script>
-      const { Editor } = toastui;
-      const { colorSyntax } = Editor.plugin;
-
-      const editor = new Editor({
-        el: document.querySelector('#editor'),
-        previewStyle: 'vertical',
-        height: '500px',
-        initialEditType: 'wysiwyg',
-        initialValue: 'content',
-        plugins: [colorSyntax]
+    $(document).ready(function() {
+	var sendFile = function (file, el) {
+	      var form_data = new FormData();
+	      form_data.append('file', file);
+	      $.ajax({
+	        data: form_data,
+	        type: "POST",
+	        url: '/file',
+	        cache: false,
+	        contentType: false,
+	        enctype: 'multipart/form-data',
+	        processData: false,
+	        success: function(url) {
+	        		$('#summernote').summernote('insertImage', url);
+		        $('#imageBoard > ul').append('<li><img src="'+ url +'" width="480" height="auto"/></li>');
+	        }
+	      });
+	    }
+	    var sendFile2 = function (file, el) {
+	      var form_data = new FormData();
+	      form_data.append('file', file);
+	      $.ajax({
+	        data: form_data,
+	        type: "POST",
+	        url: '/file',
+	        cache: false,
+	        contentType: false,
+	        enctype: 'multipart/form-data',
+	        processData: false,
+	        success: function(url) {
+	        		$('#summernote').summernote('insertImage', url);
+		        $('#imageBoard > ul').append('<li><img src="'+ url +'" width="480" height="auto"/></li>');
+	        }
+	      });
+	    }
+	$('#summernote1').summernote({
+        height: 100,
+        minHeight: null,
+        maxHeight: null,
+        focus: true,
+		lang: "ko-KR",
+	    placeholder: '내용을 입력하세요.',
+        callbacks: {
+          onImageUpload: function(files, editor, welEditable) {
+            for (var i = files.length - 1; i >= 0; i--) {
+              sendFile(files[i], this);
+            }
+          }
+        }
       });
-
-
-   const editor2 = new toastui.Editor({
-        el: document.querySelector('#editor2'),
-        height: '150px',
-        initialValue: 'content',
-        initialEditType: 'wysiwyg'
+      	$('#summernote2').summernote({
+        height: 300,
+        minHeight: null,
+        maxHeight: null,
+        focus: true,
+		lang: "ko-KR",
+	    placeholder: '내용을 입력하세요.',
+        callbacks: {
+          onImageUpload: function(files, editor, welEditable) {
+            for (var i = files.length - 1; i >= 0; i--) {
+              sendFile2(files[i], this);
+            }
+          }
+        }
       });
-
-   editor.setHtml(document.getElementById("test").value)
-   editor2.setHtml(document.getElementById("test2").value)
+});
+</script>
+<script>
 
         function inputNumberAutoComma(obj) {
 
@@ -164,10 +212,6 @@ JavaScripts
 
 
 showroomsave : function () {
-         var mcontent = editor.getHtml();
-         document.getElementById("test").value = mcontent;
-         var scontent = editor2.getHtml();
-         document.getElementById("test2").value = scontent;
           var form = $('#insertForm')[0];
                 var formData = new FormData(form);
                 formData.append("file", $("#file")[0].files[0]);
@@ -324,10 +368,6 @@ showroomupdate : function() {
                        },
 
 showroomcopy : function () {
-         var mcontent = editor.getHtml();
-         document.getElementById("test").value = mcontent;
-         var scontent = editor2.getHtml();
-         document.getElementById("test2").value = scontent;
           var form = $('#insertForm')[0];
           var formData = new FormData(form);
             $.ajax({
@@ -345,10 +385,6 @@ showroomcopy : function () {
                     },
 
 directcarsave : function () {
-         var mcontent = editor.getHtml();
-         document.getElementById("test").value = mcontent;
-         var scontent = editor2.getHtml();
-         document.getElementById("test2").value = scontent;
           var form = $('#insertForm')[0];
                 var formData = new FormData(form);
                 formData.append("file", $("#file")[0].files[0]);
@@ -506,10 +542,6 @@ directcarupdate : function() {
 
 
          importcarsave : function () {
-         var mcontent = editor.getHtml();
-         document.getElementById("test").value = mcontent;
-         var scontent = editor2.getHtml();
-         document.getElementById("test2").value = scontent;
           var form = $('#insertForm')[0];
                 var formData = new FormData(form);
                 formData.append("file", $("#file")[0].files[0]);
@@ -667,10 +699,6 @@ directcarupdate : function() {
 
 
          usedcarsave : function () {
-         var mcontent = editor.getHtml();
-         document.getElementById("test").value = mcontent;
-         var scontent = editor2.getHtml();
-         document.getElementById("test2").value = scontent;
           var form = $('#insertForm')[0];
                 var formData = new FormData(form);
                 formData.append("file", $("#file")[0].files[0]);
@@ -711,7 +739,6 @@ directcarupdate : function() {
                                   var form = $('#insertForm')[0];
                                   var formData = new FormData(form);
                                   var fileCheck = document.getElementById("file").value;
-                                  console.log(fileCheck);
                                   var fileCheck2 = document.getElementById("file2").value;
                                   var fileCheck3 = document.getElementById("file3").value;
                                   var fileCheck4 = document.getElementById("file4").value;

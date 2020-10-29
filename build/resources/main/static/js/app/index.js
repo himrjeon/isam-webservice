@@ -109,12 +109,10 @@ var main = {
 
         },
     save : function () {
-            var content = editor.getHtml();
-            document.getElementById("content").value = content;
             var data = {
                 title: $('#title').val(),
                 author: $('#author').val(),
-                content: $('#content').val()
+                content: $('#summernote').val()
             };
             $.ajax({
                         type: 'POST',
@@ -132,12 +130,10 @@ var main = {
 
      // 신규로 추가될 업데이트 함수 기능
      update : function() {
-            var content = editor.getHtml();
-            document.getElementById("content").value = content;
 
             var data= {
                 title: $('#title').val(),
-                content: $('#content').val()
+                content: $('#summernote').val()
             };
 
             var id = $('#id').val();
@@ -176,13 +172,10 @@ var main = {
      },
 
     news_save : function () {
-            var content = editor.getHtml();
-            document.getElementById("content").value = content;
-
             var data = {
                 title: $('#title').val(),
                 author: $('#author').val(),
-                content: $('#content').val()
+                content: $('#summernote').val()
             };
             $.ajax({
                         type: 'POST',
@@ -200,12 +193,9 @@ var main = {
 
      // 신규로 추가될 업데이트 함수 기능
      newsupdate : function() {
-            var content = editor.getHtml();
-            document.getElementById("content").value = content;
-
             var data= {
                 title: $('#title').val(),
-                content: $('#content').val()
+               content: $('#summernote').val()
             };
 
             var id = $('#id').val();
@@ -244,13 +234,10 @@ var main = {
      },
 
          noticesave : function () {
-
-            var content = editor.getHtml();
-            document.getElementById("content").value = content;
                  var data = {
                      title: $('#title').val(),
                      author: $('#author').val(),
-                     content: $('#content').val()
+                     content: $('#summernote').val()
                  };
                  $.ajax({
                              type: 'POST',
@@ -268,12 +255,10 @@ var main = {
 
           // 신규로 추가될 업데이트 함수 기능
           noticeupdate : function() {
-            var content = editor.getHtml();
-            document.getElementById("content").value = content;
 
                  var data= {
                      title: $('#title').val(),
-                     content: $('#content').val()
+                     content: $('#summernote').val()
                  };
 
                  var id = $('#id').val();

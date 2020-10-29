@@ -290,24 +290,23 @@
                                         <input class="form-control" type="file" id="file20" name="file20">
                                     </div>
                                 </div>
-                                <div style="display:none">
-                                    <textarea id="test"  name="content">{{{importcar.content}}}</textarea>
-                                    <textarea id="test2" name="subcontent">{{{importcar.subcontent}}}</textarea>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        간단소개내용(3줄이하)
+                                        <textarea class="form-control" id="summernote1"
+                                                  name="subcontent" placeholder="content" rows="3">{{{importcar.subcontent}}}</textarea>
+                                    </div>
                                 </div>
+                                <br><br>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        상세내용
+                                        <textarea class="form-control" id="summernote2"
+                                                  name="content" placeholder="content" rows="7">{{{importcar.content}}}</textarea>
+                                    </div>
+                                </div>
+
                             </form>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    간단소개내용(3줄이하)
-                                    <div id="editor2"></div>
-                                </div>
-                            </div>
-                            <br><br>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    상세내용
-                                    <div id="editor"></div>
-                                </div>
-                            </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <a href="/admin/importcar" role="button" class="btn btn-g btn-round">취소</a>
