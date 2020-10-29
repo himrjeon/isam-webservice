@@ -6,6 +6,8 @@ import kr.seoulautogallery.web.dto.NoticeListResponseDto;
 import kr.seoulautogallery.web.dto.PopupDto;
 import kr.seoulautogallery.web.dto.PostsResponseDto;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +25,20 @@ public class ImportCarsS3UploadService {
         importCarsRepository.save(importCarsDto.toEntity());
     }
 
+    @Transactional
+    public List<ImportCarsDto> getBoardList(Pageable pageable) {
+        Page<ImportCars> galleryEntityList = importCarsRepository.findAll(pageable);
+        List<ImportCarsDto> galleryDtoList = new ArrayList<>();;
+
+        for (ImportCars galleryEntity : galleryEntityList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+        return galleryDtoList;
+
+    }
+
+
     public List<ImportCarsDto> getList() {
         List<ImportCars> galleryEntityList = importCarsRepository.findAllDesc();
         List<ImportCarsDto> galleryDtoList = new ArrayList<>();
@@ -30,6 +46,7 @@ public class ImportCarsS3UploadService {
         for (ImportCars galleryEntity : galleryEntityList) {
             galleryDtoList.add(convertEntityToDto(galleryEntity));
         }
+
 
         return galleryDtoList;
     }

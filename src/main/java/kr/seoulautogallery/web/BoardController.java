@@ -13,6 +13,9 @@ import kr.seoulautogallery.web.dto.NewsResponseDto;
 import kr.seoulautogallery.web.dto.NoticeResponseDto;
 import kr.seoulautogallery.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -99,8 +102,8 @@ public class BoardController {
 
 
     @GetMapping("/freeboard")
-    public String freeboard(Model model, @LoginUser SessionUser user) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
-        model.addAttribute("posts", postsService.findAllDesc());
+    public String freeboard(Model model, @LoginUser SessionUser user,  @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
+        // model.addAttribute("posts", postsService.findAllDesc());
         // 기존에 httpSesstion.getAttribute("user")로 가져오던 세션 정보 값이 개선됨.
         // 이제는 어느 컨트롤러든지 @LoginUser만 사용하면 세션 정보를 가져올 수 있게 됨.
 
@@ -119,11 +122,15 @@ public class BoardController {
             model.addAttribute("dName", dealerUser.getName());
         }
 
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("posts", postsService.getBoardList(pageable));
+
         return "freeboard";
     }
 
     @GetMapping("/news")
-    public String newsboard(Model model, @LoginUser SessionUser user) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
+    public String newsboard(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
         model.addAttribute("news", newsServices.findAllDesc());
         // 기존에 httpSesstion.getAttribute("user")로 가져오던 세션 정보 값이 개선됨.
         // 이제는 어느 컨트롤러든지 @LoginUser만 사용하면 세션 정보를 가져올 수 있게 됨.
@@ -142,6 +149,9 @@ public class BoardController {
         if(dealerUser != null) {
             model.addAttribute("dName", dealerUser.getName());
         }
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("news", newsServices.getBoardList(pageable));
 
         return "news";
     }
@@ -197,8 +207,8 @@ public class BoardController {
     }
 
     @GetMapping("/notice")
-    public String notice(Model model, @LoginUser SessionUser user) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
-        model.addAttribute("notice", noticeService.findAllDesc());
+    public String notice(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {  //model은 서버템플릿엔진에서 사용할 수 있는 객체 저장 여기서는 결과는 posts로 index.mustache에 전달
+        // model.addAttribute("notice", noticeService.findAllDesc());
         // 기존에 httpSesstion.getAttribute("user")로 가져오던 세션 정보 값이 개선됨.
         // 이제는 어느 컨트롤러든지 @LoginUser만 사용하면 세션 정보를 가져올 수 있게 됨.
 
@@ -216,6 +226,9 @@ public class BoardController {
         if(dealerUser != null) {
             model.addAttribute("dName", dealerUser.getName());
         }
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("notice", noticeService.getBoardList(pageable));
 
 
         return "notice";

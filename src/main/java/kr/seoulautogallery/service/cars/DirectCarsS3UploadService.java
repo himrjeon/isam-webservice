@@ -2,8 +2,12 @@ package kr.seoulautogallery.service.cars;
 
 import kr.seoulautogallery.domain.DirectCars;
 import kr.seoulautogallery.domain.DirectCarsRepository;
+import kr.seoulautogallery.domain.UsedCars;
 import kr.seoulautogallery.web.dto.DirectCarsDto;
+import kr.seoulautogallery.web.dto.UsedCarsDto;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +22,19 @@ public class DirectCarsS3UploadService {
 
     public void savePost(DirectCarsDto directCarsDto) {
         directCarsRepository.save(directCarsDto.toEntity());
+    }
+
+    @Transactional
+    public List<DirectCarsDto> getBoardList(Pageable pageable) {
+        Page<DirectCars> galleryEntityList = directCarsRepository.findAll(pageable);
+        List<DirectCarsDto> galleryDtoList = new ArrayList<>();;
+
+        for (DirectCars galleryEntity : galleryEntityList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+        return galleryDtoList;
+
     }
 
     public List<DirectCarsDto> getList() {

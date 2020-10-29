@@ -1,9 +1,13 @@
 package kr.seoulautogallery.service.cars;
 
+import kr.seoulautogallery.domain.ImportCars;
 import kr.seoulautogallery.domain.ShowRoom;
 import kr.seoulautogallery.domain.ShowRoomRepository;
+import kr.seoulautogallery.web.dto.ImportCarsDto;
 import kr.seoulautogallery.web.dto.ShowRoomDto;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +22,19 @@ public class ShowRoomS3UploadService {
 
     public void savePost(ShowRoomDto showRoomDto) {
         showRoomRepository.save(showRoomDto.toEntity());
+    }
+
+    @Transactional
+    public List<ShowRoomDto> getBoardList(Pageable pageable) {
+        Page<ShowRoom> galleryEntityList = showRoomRepository.findAll(pageable);
+        List<ShowRoomDto> galleryDtoList = new ArrayList<>();;
+
+        for (ShowRoom galleryEntity : galleryEntityList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+        return galleryDtoList;
+
     }
 
     public List<ShowRoomDto> getList() {

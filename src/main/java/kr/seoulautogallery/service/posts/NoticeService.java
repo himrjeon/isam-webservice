@@ -4,6 +4,7 @@ import kr.seoulautogallery.domain.Notice;
 import kr.seoulautogallery.domain.NoticeRepository;
 import kr.seoulautogallery.web.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,6 +44,15 @@ public class NoticeService {
                 .map(NoticeListResponseDto::new) // .map(posts -> new PostsListResponseDto(posts))
                 // 결과로 넘어온 posts의 스트림을 map을 통해 listdto로 변환하고 list로 변환하는 메소드.
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<NoticeListResponseDto> getBoardList(Pageable pageable) {
+        return noticeRepository.findAll(pageable).stream()
+                .map(NoticeListResponseDto::new) // .map(posts -> new PostsListResponseDto(posts))
+                // 결과로 넘어온 posts의 스트림을 map을 통해 listdto로 변환하고 list로 변환하는 메소드.
+                .collect(Collectors.toList());
+
     }
 
 

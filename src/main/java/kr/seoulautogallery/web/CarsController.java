@@ -12,6 +12,9 @@ import kr.seoulautogallery.web.dto.ShowRoomDto;
 import kr.seoulautogallery.web.dto.UsedCarsDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.text.StringEscapeUtils;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +38,7 @@ public class CarsController {
     private final ShowRoomS3UploadService showRoomS3UploadService;
 
     @GetMapping("/importcar")
-    public String importcar(Model model, @LoginUser SessionUser user) {
+    public String importcar(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -46,7 +49,10 @@ public class CarsController {
         }
 
         //List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
-        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop50Desc();
+        // List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop50Desc();
+        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("galleryList", importCarsDtoList);
 
         return "importcar";
@@ -152,7 +158,7 @@ public class CarsController {
     }
 
     @GetMapping("/usedcar")
-    public String usedCar(Model model, @LoginUser SessionUser user) {
+    public String usedCar(Model model, @LoginUser SessionUser user,  @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -161,9 +167,13 @@ public class CarsController {
         if(dealerUser != null) {
             model.addAttribute("dName", dealerUser.getName());
         }
-
-        List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getList();
+        List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("galleryList", usedCarsDtoList);
+
+        // List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getList();
+        // model.addAttribute("galleryList", usedCarsDtoList);
 
         return "usedcar";
     }
@@ -267,7 +277,7 @@ public class CarsController {
     }
 
     @GetMapping("/showroom")
-    public String showroom(Model model, @LoginUser SessionUser user) {
+    public String showroom(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -277,10 +287,15 @@ public class CarsController {
             model.addAttribute("dName", dealerUser.getName());
         }
 
+        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("galleryList", showRoomDtoList);
+
 
         //List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
-        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
-        model.addAttribute("galleryList", showRoomDtoList);
+        // List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
+        // model.addAttribute("galleryList", showRoomDtoList);
 
         return "showroom";
     }

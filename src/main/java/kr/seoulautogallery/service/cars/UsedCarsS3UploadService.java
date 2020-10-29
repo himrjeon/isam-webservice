@@ -1,11 +1,9 @@
 package kr.seoulautogallery.service.cars;
 
 
-import kr.seoulautogallery.domain.ImportCars;
-import kr.seoulautogallery.domain.Popup;
-import kr.seoulautogallery.domain.UsedCars;
-import kr.seoulautogallery.domain.UsedCarsRepository;
+import kr.seoulautogallery.domain.*;
 import kr.seoulautogallery.web.dto.ImportCarsDto;
+import kr.seoulautogallery.web.dto.ShowRoomDto;
 import kr.seoulautogallery.web.dto.UsedCarsDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,6 +27,19 @@ public class UsedCarsS3UploadService {
 
     public void savePost(UsedCarsDto usedCarsDto) {
         usedCarsRepository.save(usedCarsDto.toEntity());
+    }
+
+    @Transactional
+    public List<UsedCarsDto> getBoardList(Pageable pageable) {
+        Page<UsedCars> galleryEntityList = usedCarsRepository.findAll(pageable);
+        List<UsedCarsDto> galleryDtoList = new ArrayList<>();;
+
+        for (UsedCars galleryEntity : galleryEntityList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+        return galleryDtoList;
+
     }
 
     public List<UsedCarsDto> getList() {

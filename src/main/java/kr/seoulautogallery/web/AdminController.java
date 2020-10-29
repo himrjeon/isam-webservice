@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,7 +54,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/importcar")
-    public String importcar(Model model, @LoginUser SessionUser user) {
+    public String importcar(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -64,14 +65,17 @@ public class AdminController {
         }
 
        // List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getList();
-        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop50Desc();
+        //List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.findTop50Desc();
+        List<ImportCarsDto> importCarsDtoList = importCarsS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("galleryList", importCarsDtoList);
 
         return "admin-importcar";
     }
 
     @GetMapping("/admin/usedcar")
-    public String usedcar(Model model, @LoginUser SessionUser user, @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
+    public String usedcar(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -81,12 +85,10 @@ public class AdminController {
             model.addAttribute("dName", dealerUser.getName());
         }
 
-        List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getList();
+        List<UsedCarsDto> usedCarsDtoList = usedCarsS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("galleryList", usedCarsDtoList);
-        List<UsedCarsDto> boardList = usedCarsS3UploadService.findAll(pageNum);
-        String[] pageList = usedCarsS3UploadService.getPageList(pageNum);
-        model.addAttribute(boardList);
-        model.addAttribute("pageList", pageList);
 
         return "admin-usedcar";
     }
@@ -94,8 +96,8 @@ public class AdminController {
 
 
     @GetMapping("/admin/notice")
-    public String notice(Model model, @LoginUser SessionUser user) {
-        model.addAttribute("notice", noticeService.findAllDesc());
+    public String notice(Model model, @LoginUser SessionUser user,  @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        // model.addAttribute("notice", noticeService.findAllDesc());
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -104,13 +106,17 @@ public class AdminController {
         if(dealerUser != null) {
             model.addAttribute("dName", dealerUser.getName());
         }
+
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("notice", noticeService.getBoardList(pageable));
 
         return "admin-notice";
     }
 
     @GetMapping("/admin/news")
-    public String newsboard(Model model, @LoginUser SessionUser user) {
-        model.addAttribute("news", newsServices.findAllDesc());
+    public String newsboard(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        // model.addAttribute("news", newsServices.findAllDesc());
 
         if(user != null) {
             model.addAttribute("uName", user.getName());
@@ -120,6 +126,10 @@ public class AdminController {
         if(dealerUser != null) {
             model.addAttribute("dName", dealerUser.getName());
         }
+
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("news", newsServices.getBoardList(pageable));
 
         return "admin-news";
     }
@@ -249,7 +259,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/directcar")
-    public String directCar(Model model, @LoginUser SessionUser user) {
+    public String directCar(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -259,7 +269,12 @@ public class AdminController {
             model.addAttribute("dName", dealerUser.getName());
         }
 
-        List<DirectCarsDto> directCarsDtoList = directCarsS3UploadService.getList();
+        //List<DirectCarsDto> directCarsDtoList = directCarsS3UploadService.getList();
+        //model.addAttribute("galleryList", directCarsDtoList);
+
+        List<DirectCarsDto> directCarsDtoList = directCarsS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("galleryList", directCarsDtoList);
 
         return "admin-directcar";
@@ -381,7 +396,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/showroom")
-    public String showroom(Model model, @LoginUser SessionUser user) {
+    public String showroom(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
             model.addAttribute("uName", user.getName());
         }
@@ -391,7 +406,12 @@ public class AdminController {
             model.addAttribute("dName", dealerUser.getName());
         }
 
-        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
+        // List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getList();
+       // model.addAttribute("galleryList", showRoomDtoList);
+
+        List<ShowRoomDto> showRoomDtoList = showRoomS3UploadService.getBoardList(pageable);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("galleryList", showRoomDtoList);
 
         return "admin-showroom";

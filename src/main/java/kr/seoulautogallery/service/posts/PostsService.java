@@ -2,11 +2,9 @@ package kr.seoulautogallery.service.posts;
 
 import kr.seoulautogallery.domain.Posts;
 import kr.seoulautogallery.domain.PostsRepository;
-import kr.seoulautogallery.web.dto.PostsListResponseDto;
-import kr.seoulautogallery.web.dto.PostsResponseDto;
-import kr.seoulautogallery.web.dto.PostsSaveRequestDto;
-import kr.seoulautogallery.web.dto.PostsUpdateRequestDto;
+import kr.seoulautogallery.web.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +43,15 @@ public class PostsService {
                 .map(PostsListResponseDto::new) // .map(posts -> new PostsListResponseDto(posts))
                 // 결과로 넘어온 posts의 스트림을 map을 통해 listdto로 변환하고 list로 변환하는 메소드.
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<PostsListResponseDto> getBoardList(Pageable pageable) {
+        return postsRepository.findAll(pageable).stream()
+                .map(PostsListResponseDto::new) // .map(posts -> new PostsListResponseDto(posts))
+                // 결과로 넘어온 posts의 스트림을 map을 통해 listdto로 변환하고 list로 변환하는 메소드.
+                .collect(Collectors.toList());
+
     }
 
     @Transactional
