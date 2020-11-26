@@ -58,6 +58,26 @@ public class CarsController {
         return "importcar";
     }
 
+    @GetMapping("/importcar/search")
+    public String search(String keyword, Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        List<ImportCarsDto> searchList = importCarsS3UploadService.search(keyword, pageable);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("searchList", searchList);
+
+        return "importcar-search";
+    }
+
     @GetMapping("/importcar/save")
     public String importCarSave(Model model, @LoginUser SessionUser user) {
         if(user != null) {

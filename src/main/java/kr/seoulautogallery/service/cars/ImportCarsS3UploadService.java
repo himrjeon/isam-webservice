@@ -99,6 +99,20 @@ public class ImportCarsS3UploadService {
         return galleryDtoList;
     }
 
+    @Transactional
+    public List<ImportCarsDto> search(String keyword, Pageable pageable) {
+
+        List<ImportCars> boardList = importCarsRepository.findByTitleContaining(keyword, pageable);
+        List<ImportCarsDto> galleryDtoList = new ArrayList<>();
+
+        for (ImportCars galleryEntity : boardList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+
+        return galleryDtoList;
+    }
+
 
     private ImportCarsDto convertEntityToDto(ImportCars galleryEntity) {
         return ImportCarsDto.builder()
