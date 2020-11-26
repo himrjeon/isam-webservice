@@ -1,0 +1,72 @@
+{{>layout/headermain}}
+
+
+<div class="main">
+    <section class="module">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h1 class="module-title font-alt">수입 차량 목록</h1>
+                </div>
+            </div>
+            <hr class="divider-w pt-20">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form action="/importcar/search" method="GET">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+                            <button class="btn btn-secondary" style="float: none;">검색</button>
+                        </div>
+                    </form>
+                    <table class="table table-striped table-border checkout-table">
+                        <tbody>
+                        <tr>
+                            <th class="hidden-xs">차량사진</th>
+                            <th>차량정보</th>
+                            <th class="hidden-xs">연식</th>
+                            <th>주행거리</th>
+                            <th>색상</th>
+                        </tr>
+                        {{#searchList}}
+                            <tr>
+                                <td rowspan="3" class="hidden-xs"><a href="/importcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
+                                <td rowspan="3">
+                                    <a href="/importcar/detail/{{id}}">
+                                        <b><h5 class="product-title font-alt">{{title}}</h5></b>
+                                        <h7>{{{subcontent}}}</h7>
+                                        <h5 class="product-title font-alt">{{carsalecheck}}</h5>
+                                    </a>
+                                </td>
+                                <td class="hidden-xs">
+                                    <h5 class="product-title font-alt">{{caryear}}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="product-title font-alt">{{cardistance}}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="product-title font-alt">{{carcolor}}</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <b>가격</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <h5 class="product-title font-alt">{{carprice}}</h5>
+                                </td>
+                            </tr>
+                        {{/searchList}}
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{previous}}'" >이전 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{next}}'" >다음 페이지</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+{{>layout/footermain}}
