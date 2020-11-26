@@ -1,8 +1,10 @@
 package kr.seoulautogallery.service.cars;
 
+import kr.seoulautogallery.domain.DirectCars;
 import kr.seoulautogallery.domain.ImportCars;
 import kr.seoulautogallery.domain.ShowRoom;
 import kr.seoulautogallery.domain.ShowRoomRepository;
+import kr.seoulautogallery.web.dto.DirectCarsDto;
 import kr.seoulautogallery.web.dto.ImportCarsDto;
 import kr.seoulautogallery.web.dto.ShowRoomDto;
 import lombok.AllArgsConstructor;
@@ -35,6 +37,20 @@ public class ShowRoomS3UploadService {
 
         return galleryDtoList;
 
+    }
+
+    @Transactional
+    public List<ShowRoomDto> search(String keyword, Pageable pageable) {
+
+        List<ShowRoom> boardList = showRoomRepository.findByTitleContaining(keyword, pageable);
+        List<ShowRoomDto> galleryDtoList = new ArrayList<>();
+
+        for (ShowRoom galleryEntity : boardList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+
+        return galleryDtoList;
     }
 
     public List<ShowRoomDto> getList() {

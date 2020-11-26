@@ -19,6 +19,6 @@ public interface UsedCarsRepository extends JpaRepository<UsedCars, Long> {
 
     Page<UsedCars> findAll(Pageable pageable);
 
-    List<UsedCars> findByTitleContaining(String keyword);
+    List<UsedCars> findByTitleContaining(String keyword, Pageable pageable);
 
 }

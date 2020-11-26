@@ -1,5 +1,6 @@
 package kr.seoulautogallery.domain;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,4 +15,6 @@ public interface ShowRoomRepository extends JpaRepository<ShowRoom, Long> {
 
     @Query(nativeQuery = true, value = "SELECT * FROM showroom p ORDER BY p.id DESC LIMIT 6")
     List<ShowRoom> findTop6Desc();
+
+    List<ShowRoom> findByTitleContaining(String keyword, Pageable pageable);
 }

@@ -74,6 +74,26 @@ public class AdminController {
         return "admin-importcar";
     }
 
+    @GetMapping("/admin/importcar/search")
+    public String search(String keyword, Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        List<ImportCarsDto> searchList = importCarsS3UploadService.search(keyword, pageable);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("searchList", searchList);
+
+        return "admin-importcar-search";
+    }
+
     @GetMapping("/admin/usedcar")
     public String usedcar(Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         if(user != null) {
@@ -91,6 +111,26 @@ public class AdminController {
         model.addAttribute("galleryList", usedCarsDtoList);
 
         return "admin-usedcar";
+    }
+
+    @GetMapping("/admin/usedcar/search")
+    public String usedcarsearch(String keyword, Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        List<UsedCarsDto> searchList = usedCarsS3UploadService.search(keyword, pageable);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("searchList", searchList);
+
+        return "admin-usedcar-search";
     }
 
 
@@ -280,6 +320,26 @@ public class AdminController {
         return "admin-directcar";
     }
 
+    @GetMapping("/admin/directcar/search")
+    public String directcarsearch(String keyword, Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        List<DirectCarsDto> searchList = directCarsS3UploadService.search(keyword, pageable);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("searchList", searchList);
+
+        return "admin-directcar-search";
+    }
+
     @GetMapping("/admin/directcar/save")
     public String directCarSave(Model model, @LoginUser SessionUser user) {
         if(user != null) {
@@ -415,6 +475,26 @@ public class AdminController {
         model.addAttribute("galleryList", showRoomDtoList);
 
         return "admin-showroom";
+    }
+
+    @GetMapping("/admin/showroom/search")
+    public String showroomsearch(String keyword, Model model, @LoginUser SessionUser user, @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        if(user != null) {
+            model.addAttribute("uName", user.getName());
+        }
+
+        DealerUser dealerUser = (DealerUser)httpSession.getAttribute("user1");
+        if(dealerUser != null) {
+            model.addAttribute("dName", dealerUser.getName());
+        }
+
+        List<ShowRoomDto> searchList = showRoomS3UploadService.search(keyword, pageable);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("searchList", searchList);
+
+        return "admin-showroom-search";
     }
 
     @GetMapping("/admin/showroom/save")

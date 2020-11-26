@@ -42,6 +42,20 @@ public class UsedCarsS3UploadService {
 
     }
 
+    @Transactional
+    public List<UsedCarsDto> search(String keyword, Pageable pageable) {
+
+        List<UsedCars> boardList = usedCarsRepository.findByTitleContaining(keyword, pageable);
+        List<UsedCarsDto> galleryDtoList = new ArrayList<>();
+
+        for (UsedCars galleryEntity : boardList) {
+            galleryDtoList.add(convertEntityToDto(galleryEntity));
+        }
+
+
+        return galleryDtoList;
+    }
+
     public List<UsedCarsDto> getList() {
         List<UsedCars> galleryEntityList = usedCarsRepository.findAllDesc();
         List<UsedCarsDto> galleryDtoList = new ArrayList<>();

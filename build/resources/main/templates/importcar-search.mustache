@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <h1 class="module-title font-alt">국산 차량 목록</h1>
+                    <h1 class="module-title font-alt">수입 차량 목록</h1>
                 </div>
             </div>
             <hr class="divider-w pt-20">
@@ -27,12 +27,12 @@
                             <th>주행거리</th>
                             <th>색상</th>
                         </tr>
-                        {{#galleryList}}
+                        {{#searchList}}
                             <tr>
-                                <td rowspan="3" class="hidden-xs"><a href="/usedcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
+                                <td rowspan="3" class="hidden-xs"><a href="/importcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
                                 <td rowspan="3">
-                                    <a href="/usedcar/detail/{{id}}">
-                                        <h5 class="product-title font-alt">{{title}}</h5>
+                                    <a href="/importcar/detail/{{id}}">
+                                        <b><h5 class="product-title font-alt">{{title}}</h5></b>
                                         <h7>{{{subcontent}}}</h7>
                                         <h5 class="product-title font-alt">{{carsalecheck}}</h5>
                                     </a>
@@ -57,12 +57,13 @@
                                     <h5 class="product-title font-alt">{{carprice}}</h5>
                                 </td>
                             </tr>
-                        {{/galleryList}}
+                        {{/searchList}}
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{previous}}'" >이전 페이지</button>
-                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{next}}'" >다음 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{previous}}'" >이전 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{next}}'" >다음 페이지</button>
                 </div>
+
             </div>
         </div>
     </section>

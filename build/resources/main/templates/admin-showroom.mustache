@@ -54,6 +54,12 @@
                         </div>
                     </div>
                     <div class="post-entr">
+                        <form action="/admin/showroom/search" method="GET">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+                                <button class="btn btn-secondary" style="float: none;">검색</button>
+                            </div>
+                        </form>
                         <table class="table table-striped table-border checkout-table">
                             <tbody>
                             <tr>
@@ -67,7 +73,7 @@
                                     <td>
                                         <a href="/showroom/detail/{{id}}">
                                             <h7 class="product-title font-alt">{{title}}</h7>
-                                            <h7>{{subcontent}}</h7>
+                                            <h7>{{{subcontent}}}</h7>
                                             <h7 class="product-title font-alt">{{carsalecheck}}</h7>
                                         </a>
                                     </td>
