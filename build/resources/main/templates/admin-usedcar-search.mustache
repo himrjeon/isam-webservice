@@ -50,11 +50,11 @@
                 <div class="col-sm-8 col-sm-offset-1">
                     <div class="carpost">
                         <div class="post-header font-alt">
-                            <h1 class="post-title">차량 목록</h1>
+                            <h1 class="post-title">중고 차량 목록</h1>
                         </div>
                     </div>
                     <div class="post-entr">
-                        <form action="/admin/importcar/search" method="GET">
+                        <form action="/admin/usedcar/search" method="GET">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
                                 <button class="btn btn-secondary" style="float: none;">검색</button>
@@ -70,11 +70,11 @@
                                 <th>색상</th>
                                 <th>등록일</th>
                             </tr>
-                            {{#galleryList}}
+                            {{#searchList}}
                                 <tr>
-                                    <td rowspan="3" class="hidden-xs"><a href="/importcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
+                                    <td rowspan="3" class="hidden-xs"><a href="/usedcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
                                     <td rowspan="3">
-                                        <a href="/importcar/detail/{{id}}">
+                                        <a href="/usedcar/detail/{{id}}">
                                             <h7 class="product-title font-alt">{{title}}</h7>
                                             <h7>{{{subcontent}}}</h7>
                                             <h7 class="product-title font-alt">{{carsalecheck}}</h7>
@@ -106,16 +106,16 @@
                                         <h7 class="product-title font-alt">{{carprice}}</h7>
                                     </td>
                                     <td colspan="2">
-                                        <button type="button" class="btn btn-primary" onclick="location.href='/importcar/update/{{id}}'" >수정</button>
+                                        <button type="button" class="btn btn-primary" onclick="location.href='/usedcar/update/{{id}}'" >수정</button>
                                         <input type="hidden" id="id" value="{{id}}">
-                                        <button type="button" class="btn btn-danger" id="car-btn-delete">삭제</button>
+                                        <button type="button" class="btn btn-danger" id="usedcar-btn-delete">삭제</button>
                                     </td>
                                 </tr>
-                            {{/galleryList}}
+                            {{/searchList}}
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{previous}}'" >이전 페이지</button>
-                        <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{next}}'" >다음 페이지</button>
+                        <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{previous}}'" >이전 페이지</button>
+                        <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{next}}'" >다음 페이지</button>
                     </div>
                 </div>
             </div>

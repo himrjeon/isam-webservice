@@ -12,7 +12,7 @@
             <hr class="divider-w pt-20">
             <div class="row">
                 <div class="col-sm-12">
-                    <form action="/importcar/search" method="GET">
+                    <form action="/usedcar/search" method="GET">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
                             <button class="btn btn-secondary" style="float: none;">검색</button>
@@ -27,7 +27,7 @@
                             <th>주행거리</th>
                             <th>색상</th>
                         </tr>
-                        {{#galleryList}}
+                        {{#searchList}}
                             <tr>
                                 <td rowspan="3" class="hidden-xs"><a href="/usedcar/detail/{{id}}"><img src="{{imgFullPath}}" alt="차량이미지"/></a></td>
                                 <td rowspan="3">
@@ -57,11 +57,11 @@
                                     <h5 class="product-title font-alt">{{carprice}}</h5>
                                 </td>
                             </tr>
-                        {{/galleryList}}
+                        {{/searchList}}
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{previous}}'" >이전 페이지</button>
-                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?page={{next}}'" >다음 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{previous}}'" >이전 페이지</button>
+                    <button type="button" class="btn btn-border-d btn-circle" onclick="location.href='?keyword={{keyword}}&page={{next}}'" >다음 페이지</button>
                 </div>
             </div>
         </div>
